@@ -1,0 +1,28 @@
+@use "../Content/components/font-sizes" as f;
+
+:root {
+    --color-front: #b86649;
+    --color-back: #496e57;
+    --color-ai: #746b9e;
+}
+
+#roadmap_hero {
+    @include f.text-size(p);
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    align-items: center;
+    max-width: 70rem;
+    margin: auto;
+    gap: 5rem;
+    margin-top: 10rem;
+
+    .text {
+        h4 {
+            @include f.text-size(hero);
+        }
+    }
+    .graphics {
+        fill: transparent;
+        width: 30rem;
+    }
+}

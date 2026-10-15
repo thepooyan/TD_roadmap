@@ -45,6 +45,20 @@ html {
 
   --text-9xl: 8rem;
   --text-9xl--line-height: 1;
+
+  //  standard sizes
+
+  --text-hero: var(--text-6xl);
+  --text-hero--line-height: var(--text-6xl--line-height);
+
+  --text-title: var(--text-2xl);
+  --text-title--line-height: var(--text-2xl--line-height);
+
+  --text-p: var(--text-md);
+  --text-p--line-height: var(--text-md--line-height);
+
+  --text-span: var(--text-sm);
+  --text-span--line-height: var(--text-sm--line-height);
 }
 
 @mixin text-size($size) {
