@@ -1,5 +1,5 @@
 .button {
-    --color: white;
+    --color: var(--color-td-foreground);
     --bg: var(--color-td);
     --color-hover: var(--color);
     --bg-hover: var(--color-td-dark);
@@ -8,7 +8,9 @@
     padding: 13px 23px;
     border-radius: 7px;
     transition: all .2s;
-    display: inline-block;
+    display: inline-flex;
+    gap: .7rem;
+    align-items: center;
 
     &:hover {
         background-color: var(--bg-hover);
