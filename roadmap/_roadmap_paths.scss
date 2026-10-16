@@ -1,0 +1,54 @@
+.path-card {
+    text-align: right;
+    border: 1px solid #e1e8f3;
+    background: #fff;
+    border-radius: 18px;
+    min-height: 171px;
+    padding: 18px 19px;
+    position: relative;
+    transition: border-color .2s, transform .2s, box-shadow .2s;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    box-shadow: 0 4px 16px #14305c04;
+
+    &[data-path="frontend"] {
+        --cardColor: var(--color-front);
+        --cardSoft: var(--color-front-background);
+    }
+    &[data-path="backend"] {
+        --cardColor: var(--color-back);
+        --cardSoft: var(--color-back-background);
+    }
+    &[data-path="ai"] {
+        --cardColor: var(--color-ai);
+        --cardSoft: var(--color-ai-background);
+    }
+
+
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow)
+    }
+
+    &[aria-pressed="true"] {
+      border: 2px solid var(--cardColor);
+      padding: 17px 18px;
+      box-shadow: 0 11px 32px #14305c0d
+    }
+
+    .card-icon {
+      font-size: 26px;
+      width: 46px;
+      height: 46px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--cardSoft);
+      border-radius: 13px;
+      color: whtie;
+    }
+}
+
+
