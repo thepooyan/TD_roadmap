@@ -38,16 +38,16 @@
       box-shadow: 0 11px 32px #14305c0d
     }
 
-    .card-icon {
-      font-size: 26px;
-      width: 46px;
-      height: 46px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: var(--cardSoft);
-      border-radius: 13px;
-      color: whtie;
+    i,svg {
+        width: 46px;
+        height: 46px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--cardSoft);
+        border-radius: 13px;
+        color: white;
+        padding: 0.4rem;
     }
 }
 
