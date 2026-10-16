@@ -61,6 +61,10 @@ html {
   --text-title--line-height: var(--text-2xl--line-height);
   --text-title-weight: var(--weight_lg);
 
+  --text-subtitle: var(--text-xl);
+  --text-subtitle--line-height: var(--text-xl--line-height);
+  --text-subtitle-weight: var(--weight_lg);
+
   --text-p: var(--text-md);
   --text-p--line-height: var(--text-md--line-height);
   --text-p-weight: var(--weight_md);
@@ -79,19 +83,29 @@ html {
   font-size: var(--text-hero);
   line-height: var(--text-hero--line-height);
   font-weight: var(--text-hero-weight);
+  color: var(--color-gray-700);
 }
 .font-title {
   font-size: var(--text-title);
   line-height: var(--text-title--line-height);
   font-weight: var(--text-title-weight);
+  color: var(--color-gray-600);
+}
+.font-subtitle {
+  font-size: var(--text-subtitle);
+  line-height: var(--text-subtitle--line-height);
+  font-weight: var(--text-subtitle-weight);
+  color: var(--color-gray-600);
 }
 .font-p {
   font-size: var(--text-p);
   line-height: var(--text-p--line-height);
   font-weight: var(--text-p-weight);
+  color: var(--color-gray-500);
 }
 .font-span {
   font-size: var(--text-span);
   line-height: var(--text-span--line-height);
   font-weight: var(--text-span-weight);
+  color: var(--color-gray-500);
 }
