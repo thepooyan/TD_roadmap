@@ -1,0 +1,24 @@
+.button {
+    --color: white;
+    --bg: var(--color-td);
+    --color-hover: var(--color);
+    --bg-hover: var(--color-td-dark);
+    background-color: var(--bg);
+    color: var(--color);
+    padding: 13px 23px;
+    border-radius: 7px;
+    transition: all .2s;
+    display: inline-block;
+
+    &:hover {
+        background-color: var(--bg-hover);
+        color: var(--color-hover);
+        translate: 0 -2px;
+    }
+
+    &.ghost {
+        --color: var(--color-td);
+        --bg: transparent;
+        --bg-hover: #e6e6e6;
+    }
+}

@@ -5,6 +5,7 @@
     --color-back: #496e57;
     --color-ai: #746b9e;
     --color-td: #1d71b9;
+    --color-td-dark: #175e9a;
 }
 
 #roadmap_hero {
@@ -20,7 +21,7 @@
     .text {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 2rem;
 
         h4 {
             @include f.text-size(hero);
