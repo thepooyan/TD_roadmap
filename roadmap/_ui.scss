@@ -1,16 +1,22 @@
 .button {
-    --color: var(--color-td-foreground);
-    --bg: var(--color-td);
+    --color: var(--color-btn);
+    --bg: var(--color-btn-background);
     --color-hover: var(--color);
-    --bg-hover: var(--color-td-dark);
+    --bg-hover: var(--color-btn-hover);
     background-color: var(--bg);
     color: var(--color);
-    padding: 13px 23px;
-    border-radius: 7px;
     transition: all .2s;
+
+    border-radius: 12px;
+    font-weight: 800;
+    padding: 12px 20px;
+    border: 1px solid transparent;
+    min-height: 46px;
     display: inline-flex;
-    gap: .7rem;
+    gap: 8px;
     align-items: center;
+    justify-content: center;
+    box-shadow: 0 9px 18px rgba(37, 99, 235, 0.18);
 
     &:hover {
         background-color: var(--bg-hover);
@@ -21,7 +27,8 @@
     &.ghost {
         --color: var(--color-td);
         --bg: transparent;
-        --bg-hover: #e6e6e6;
+        --bg-hover: #f0f0f0;
+        box-shadow: none;
     }
 }
 
