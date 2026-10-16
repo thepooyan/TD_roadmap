@@ -1,16 +1,15 @@
 .path-card {
-    text-align: right;
     border: 1px solid #e1e8f3;
     background: #fff;
     border-radius: 18px;
-    min-height: 171px;
-    padding: 18px 19px;
-    position: relative;
-    transition: border-color .2s, transform .2s, box-shadow .2s;
+    min-height: 233px;
+    border: 2px solid transparent;
+    padding: 32px;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
-    gap: 7px;
-    box-shadow: 0 4px 16px #14305c04;
+    box-shadow: 0 4px 16px rgba(20, 48, 92, 0.0156862745);
+    justify-content: space-between;
 
     &[data-path="frontend"] {
         --cardColor: var(--color-front);
@@ -34,7 +33,6 @@
 
     &[aria-pressed="true"] {
       border: 2px solid var(--cardColor);
-      padding: 17px 18px;
       box-shadow: 0 11px 32px #14305c0d
     }
 

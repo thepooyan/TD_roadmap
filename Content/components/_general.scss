@@ -1,5 +1,7 @@
 @use "../source/Variables";
 
+@layer base {
+
 :root {
     --colorTitle: #1d71b9;
     --colorTheme: #1d71b9;
@@ -953,3 +955,5 @@ img {
   }
 }
 // -------------
+
+}
