@@ -1,5 +1,3 @@
-@use "../Content/components/font-sizes" as f;
-
 :root {
     --color-front: #b86649;
     --color-back: #496e57;
@@ -11,7 +9,6 @@
 }
 
 #roadmap_hero {
-    @include f.text-size(p);
     display: grid;
     grid-template-columns: repeat(2, auto);
     align-items: center;
@@ -24,7 +21,6 @@
         gap: 2rem;
 
         h4 {
-            @include f.text-size(hero);
             span {
                 color: var(--color-td);
                 position: relative;
@@ -56,7 +52,6 @@
             box-shadow: 0 8px 30px #2037290b;
             border: 1px solid var(--color);
             border-radius: 8px;
-            @include f.text-size(sm);
             color: var(--color);
 
             b {
@@ -83,9 +78,5 @@
                 transform: rotate(5deg);
             }
         }
-        .art-foot {
-            @include f.text-size(xs)
-        }
-
     }
 }

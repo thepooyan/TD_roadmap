@@ -46,22 +46,52 @@ html {
   --text-9xl: 8rem;
   --text-9xl--line-height: 1;
 
+  --weight_sm: 500;
+  --weight_md: 700;
+  --weight_lg: 800;
+  --weight_xl: 900;
+
   //  standard sizes
 
   --text-hero: var(--text-6xl);
   --text-hero--line-height: var(--text-6xl--line-height);
+  --text-hero-weight: var(--weight_xl);
 
   --text-title: var(--text-2xl);
   --text-title--line-height: var(--text-2xl--line-height);
+  --text-title-weight: var(--weight_lg);
 
   --text-p: var(--text-md);
   --text-p--line-height: var(--text-md--line-height);
+  --text-p-weight: var(--weight_md);
 
   --text-span: var(--text-sm);
   --text-span--line-height: var(--text-sm--line-height);
+  --text-span-weight: var(--weight_sm);
 }
 
 @mixin text-size($size) {
   font-size: calc(var(--text-#{$size}) * var(--font-scale));
   line-height: calc(var(--text-#{$size}--line-height) * var(--font-scale));
+}
+
+.font-hero {
+  font-size: var(--text-hero);
+  line-height: var(--text-hero--line-height);
+  font-weight: var(--text-hero-weight);
+}
+.font-title {
+  font-size: var(--text-title);
+  line-height: var(--text-title--line-height);
+  font-weight: var(--text-title-weight);
+}
+.font-p {
+  font-size: var(--text-p);
+  line-height: var(--text-p--line-height);
+  font-weight: var(--text-p-weight);
+}
+.font-span {
+  font-size: var(--text-span);
+  line-height: var(--text-span--line-height);
+  font-weight: var(--text-span-weight);
 }
