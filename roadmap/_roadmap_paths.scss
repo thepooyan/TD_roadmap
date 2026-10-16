@@ -4,12 +4,13 @@
     border-radius: 18px;
     min-height: 233px;
     border: 2px solid transparent;
-    padding: 32px;
     transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
     box-shadow: 0 4px 16px rgba(20, 48, 92, 0.0156862745);
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 
     &[data-path="frontend"] {
         --cardColor: var(--color-front);
@@ -48,5 +49,3 @@
         padding: 0.4rem;
     }
 }
-
-
