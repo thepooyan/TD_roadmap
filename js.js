@@ -118,6 +118,7 @@ const courses = {
     link: null,
   },
 };
+
 const paths = {
   backend: {
     title: "نقشه راه بک‌اند با دات‌نت",
@@ -141,122 +142,166 @@ const paths = {
     order: 3,
   },
 };
-const shell = document.getElementById("roadmap_shell");
-const shell_steps = shell.querySelector("#stageList");
-const shell_title = shell.querySelector("#detail-title")
-const shell_desc = shell.querySelector("#detail-desc")
-const shell_link = shell.querySelector("#detail-link")
-const shell_output = shell.querySelector("#detail-output")
-const shell_prereq = shell.querySelector("#detail-prereq")
-const shell_skills = shell.querySelector("#detail-skills")
-const shell_step = shell.querySelector("#detail-step")
-const shell_stepCount = shell.querySelector("#detail-stepCount")
-const shell_top = shell.querySelector(".shell-top")
-const shell_pathNumber = shell_top.querySelector("#pathNumber");
-const shell_roadmapTitle = shell_top.querySelector("#roadmapTitle");
-const shell_roadmapSub = shell_top.querySelector("#roadmapSub");
+
+const shell = {
+  root: document.getElementById("roadmap_shell"),
+};
+
+shell.top = {
+  root: shell.root.querySelector(".shell-top"),
+  pathNumber: shell.root.querySelector("#pathNumber"),
+  title: shell.root.querySelector("#roadmapTitle"),
+  sub: shell.root.querySelector("#roadmapSub"),
+};
+
+shell.steps = shell.root.querySelector("#stageList");
+
+shell.details = {
+  title: shell.root.querySelector("#detail-title"),
+  desc: shell.root.querySelector("#detail-desc"),
+  link: shell.root.querySelector("#detail-link"),
+  output: shell.root.querySelector("#detail-output"),
+  prereq: shell.root.querySelector("#detail-prereq"),
+  skills: shell.root.querySelector("#detail-skills"),
+  step: shell.root.querySelector("#detail-step"),
+  stepCount: shell.root.querySelector("#detail-stepCount"),
+};
+
 const numberToPersian = (number) => {
-    switch(number) {
-        case 1:
-            return "اول"
-        case 2:
-            return "دوم"
-        case 3:
-            return "سوم"
-    }
-}
+  switch (number) {
+    case 1:
+      return "اول";
+    case 2:
+      return "دوم";
+    case 3:
+      return "سوم";
+  }
+};
+
 const createStep = (data, index, step) => {
-    const {title, sub, desc, skills, output, prereq, link} = data;
-    const el = document.createElement("button");
-    el.classList.add("step");
-    if (index === 1) el.classList.add("selected")
-    el.dataset.step = step;
-    el.dataset.index = index;
+  const { title, sub } = data;
+  const el = document.createElement("button");
 
-    const span1 = document.createElement("span");
-    span1.classList.add("step-num")
-    span1.innerText = `0${index}`;
-    el.appendChild(span1)
+  el.classList.add("step");
 
-    const span2 = document.createElement("span");
-    span2.classList.add("step-text")
-        const titleEl = document.createElement("span")
-        titleEl.classList.add("step-title");
-        titleEl.innerText = title;
-        span2.appendChild(titleEl)
-        const subtitleEl = document.createElement("span")
-        subtitleEl.classList.add("step-subtitle")
-        subtitleEl.innerText = sub;
-        span2.appendChild(subtitleEl)
-    el.appendChild(span2)
+  if (index === 1) el.classList.add("selected");
 
-    const span3 = document.createElement("span");
-    span3.classList.add("step-arrow")
-    span3.innerText = "‹";
-    el.appendChild(span3)
+  el.dataset.step = step;
+  el.dataset.index = index;
 
-    return el
-}
+  const span1 = document.createElement("span");
+  span1.classList.add("step-num");
+  span1.innerText = `0${index}`;
+  el.appendChild(span1);
+
+  const span2 = document.createElement("span");
+  span2.classList.add("step-text");
+
+  const titleEl = document.createElement("span");
+  titleEl.classList.add("step-title");
+  titleEl.innerText = title;
+  span2.appendChild(titleEl);
+
+  const subtitleEl = document.createElement("span");
+  subtitleEl.classList.add("step-subtitle");
+  subtitleEl.innerText = sub;
+  span2.appendChild(subtitleEl);
+
+  el.appendChild(span2);
+
+  const span3 = document.createElement("span");
+  span3.classList.add("step-arrow");
+  span3.innerText = "‹";
+  el.appendChild(span3);
+
+  return el;
+};
+
 const insertSkills = (skills, parent) => {
-    parent.innerText = "";
-    skills.forEach(s => {
-        const span = document.createElement("span")
-        span.innerText = s;
-        parent.appendChild(span)
-    })
-}
+  parent.innerText = "";
+
+  skills.forEach((skill) => {
+    const span = document.createElement("span");
+    span.innerText = skill;
+    parent.appendChild(span);
+  });
+};
+
 const renderDetails = (data, index) => {
-    const { desc, link, output, prereq, skills, title } = data
-    shell_desc.innerText = desc;
-    shell_title.innerText = title;
-    shell_output.innerText = output;
-    shell_prereq.innerText = prereq;
-    shell_step.innerText = index;
-    shell_link.setAttribute("href", link)
-    insertSkills(skills, shell_skills);
-} 
+  const { desc, link, output, prereq, skills, title } = data;
+
+  shell.details.desc.innerText = desc;
+  shell.details.title.innerText = title;
+  shell.details.output.innerText = output;
+  shell.details.prereq.innerText = prereq;
+  shell.details.step.innerText = index;
+  shell.details.link.setAttribute("href", link ?? "#");
+
+  insertSkills(skills, shell.details.skills);
+};
+
 const step_click_event = (e) => {
-    shell_steps.querySelector(".selected").classList.remove("selected");
-    e.currentTarget.classList.add("selected");
-    const targetStep = e.currentTarget.dataset.step;
-    const index = e.currentTarget.dataset.index;
-    const targetData = courses[targetStep]
-    renderDetails(targetData, index)
-}
-shell_steps.querySelectorAll(".step").forEach(s => s.addEventListener("click", step_click_event));
+  const selected = shell.steps.querySelector(".selected");
+
+  if (selected) {
+    selected.classList.remove("selected");
+  }
+
+  e.currentTarget.classList.add("selected");
+
+  const targetStep = e.currentTarget.dataset.step;
+  const index = e.currentTarget.dataset.index;
+  const targetData = courses[targetStep];
+
+  renderDetails(targetData, index);
+};
 
 const createSteps = (steps) => {
-    const all = [] 
-    steps.forEach((step, i) => {
-        const data = courses[step];
-        const el = createStep(data, i+1, step)
-        el.addEventListener("click", step_click_event)
-        all.push(el)
-    })
-    return all
-}
+  const all = [];
+
+  steps.forEach((step, i) => {
+    const data = courses[step];
+    const el = createStep(data, i + 1, step);
+
+    el.addEventListener("click", step_click_event);
+    all.push(el);
+  });
+
+  return all;
+};
+
 const render = (path) => {
-    const {color, sub, title, steps, order} = path
-    shell.style.setProperty("--accent", `var(--color-${color})`)
+  const { color, sub, title, steps, order } = path;
 
-    shell_pathNumber.innerText = `مسیر ${numberToPersian(order)} از 3 `;
-    shell_roadmapTitle.innerText = title;
-    shell_roadmapSub.innerText = sub;
-    shell_step.innerText = 1;
-    shell_stepCount.innerText = steps.length
+  shell.root.style.setProperty("--accent", `var(--color-${color})`);
 
-    shell_steps.innerText = "";
-    createSteps(steps).forEach(s => shell_steps.appendChild(s))
-}
+  shell.top.pathNumber.innerText = `مسیر ${numberToPersian(order)} از 3`;
+  shell.top.title.innerText = title;
+  shell.top.sub.innerText = sub;
+
+  shell.details.stepCount.innerText = steps.length;
+
+  shell.steps.innerText = "";
+
+  createSteps(steps).forEach((step) => {
+    shell.steps.appendChild(step);
+  });
+
+  if (steps.length > 0) {
+    renderDetails(courses[steps[0]], 1);
+  }
+};
 
 const cards = document.querySelectorAll(".path-card");
-cards.forEach(card => {
-    card.addEventListener("click", () => {
-        cards.forEach(c => c.setAttribute("aria-pressed", false));
-        card.setAttribute("aria-pressed", true);
-        render(paths[card.dataset.path])
-    })
-})
+
+cards.forEach((card) => {
+  card.addEventListener("click", () => {
+    cards.forEach((c) => c.setAttribute("aria-pressed", false));
+    card.setAttribute("aria-pressed", true);
+
+    render(paths[card.dataset.path]);
+  });
+});
 
 // const stepsSection = document.querySelector("#stageList")
 // if (stepsSection) {
