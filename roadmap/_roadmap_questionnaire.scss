@@ -1,4 +1,18 @@
 #roadmap_questionnaire {
+    display: flex;
+    justify-content: center;
+
+    .text {
+        flex: auto;
+
+        > *:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+
+        .font-hero {
+            line-height: 4rem;
+        }
+    }
 
     .questionBox {
         --size: 30rem;
