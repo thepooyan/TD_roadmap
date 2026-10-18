@@ -30,6 +30,14 @@
         --bg-hover: #f0f0f0;
         box-shadow: none;
     }
+    &.underline {
+        --color: inherit;
+        --bg: transparent;
+        --bg-hover: transparent;
+        translate: unset;
+        box-shadow: none;
+        text-decoration: underline;
+    }
 }
 
 .container {

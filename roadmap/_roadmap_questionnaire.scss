@@ -1,0 +1,9 @@
+#roadmap_questionnaire {
+
+    .questionBox {
+        --size: 30rem;
+        flex: var(--size) 0 0;
+        height: var(--size);
+        background-color: white;
+    }
+}
