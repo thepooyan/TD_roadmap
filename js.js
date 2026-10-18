@@ -239,6 +239,7 @@ const render = (path) => {
     shell_top.querySelector("#pathNumber").innerText = `مسیر ${numberToPersian(order)} از 3 `;
     shell_top.querySelector("#roadmapTitle").innerText = title;
     shell_top.querySelector("#roadmapSub").innerText = sub;
+    shell_stepCount.innerText = steps.length
 
     shell_steps.innerText = "";
     createSteps(steps).forEach(s => shell_steps.appendChild(s))
