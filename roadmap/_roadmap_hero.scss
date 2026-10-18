@@ -31,9 +31,11 @@
         }
     }
     .graphics {
-        fill: transparent;
         width: 30rem;
         position: relative;
+        stroke-width: 3;
+        fill: none;
+        stroke-linecap: round;
 
         .floating {
             position: absolute;
