@@ -194,7 +194,6 @@ const createSteps = (steps) => {
 const render = (path) => {
     const {color, sub, title, steps, order} = path
     shell.style.setProperty("--accent", `var(--color-${color})`)
-    shell.style.setProperty("--accentSoft", `var(--color-${color}-background)`)
 
     const shell_top = shell.querySelector(".shell-top")
     shell_top.querySelector("#pathNumber").innerText = `مسیر ${numberToPersian(order)} از 3 `;
