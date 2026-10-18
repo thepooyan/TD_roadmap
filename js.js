@@ -149,6 +149,8 @@ const shell_link = shell.querySelector("#detail-link")
 const shell_output = shell.querySelector("#detail-output")
 const shell_prereq = shell.querySelector("#detail-prereq")
 const shell_skills = shell.querySelector("#detail-skills")
+const shell_step = shell.querySelector("#detail-step")
+const shell_stepCount = shell.querySelector("#detail-stepCount")
 const numberToPersian = (number) => {
     switch(number) {
         case 1:
@@ -165,6 +167,7 @@ const createStep = (data, index, step) => {
     el.classList.add("step");
     if (index === 1) el.classList.add("selected")
     el.dataset.step = step;
+    el.dataset.index = index;
 
     const span1 = document.createElement("span");
     span1.classList.add("step-num")
@@ -198,12 +201,13 @@ const insertSkills = (skills, parent) => {
         parent.appendChild(span)
     })
 }
-const renderDetails = (data) => {
+const renderDetails = (data, index) => {
     const { desc, link, output, prereq, skills, title } = data
     shell_desc.innerText = desc;
     shell_title.innerText = title;
     shell_output.innerText = output;
     shell_prereq.innerText = prereq;
+    shell_step.innerText = index;
     shell_link.setAttribute("href", link)
     insertSkills(skills, shell_skills);
 } 
@@ -211,8 +215,9 @@ const step_click_event = (e) => {
     shell_steps.querySelector(".selected").classList.remove("selected");
     e.currentTarget.classList.add("selected");
     const targetStep = e.currentTarget.dataset.step;
+    const index = e.currentTarget.dataset.index;
     const targetData = courses[targetStep]
-    renderDetails(targetData)
+    renderDetails(targetData, index)
 }
 shell_steps.querySelectorAll(".step").forEach(s => s.addEventListener("click", step_click_event));
 
