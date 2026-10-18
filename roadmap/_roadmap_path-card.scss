@@ -12,17 +12,16 @@
     align-items: center;
     gap: 1rem;
 
+    --cardSoft: color-mix(in srgb, var(--cardColor), white 80%);
+
     &[data-path="frontend"] {
         --cardColor: var(--color-front);
-        --cardSoft: var(--color-front-background);
     }
     &[data-path="backend"] {
         --cardColor: var(--color-back);
-        --cardSoft: var(--color-back-background);
     }
     &[data-path="ai"] {
         --cardColor: var(--color-ai);
-        --cardSoft: var(--color-ai-background);
     }
 
 
