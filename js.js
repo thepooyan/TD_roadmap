@@ -256,6 +256,8 @@ const step_click_event = (e) => {
   renderDetails(targetData, index);
 };
 
+shell.steps.querySelectorAll(".step").forEach(s => s.addEventListener("click", step_click_event));
+
 const createSteps = (steps) => {
   const all = [];
 
