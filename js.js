@@ -12,7 +12,7 @@ const courses = {
     output:
       "چند برنامه کوچک تعاملی که ورودی می‌گیرن، تصمیم می‌گیرن و داده رو ذخیره می‌کنن.",
     prereq: "بدون پیش‌نیاز",
-    link: null,
+    link: "https://tahlildadeh.com/coursedetails/123/%d8%a2%d9%85%d9%88%d8%b2%d8%b4-%d9%85%d9%86%d8%b7%d9%82-%d9%88-%d9%85%d9%82%d8%af%d9%85%d8%a7%d8%aa-%d8%a8%d8%b1%d9%86%d8%a7%d9%85%d9%87-%d9%86%d9%88%db%8c%d8%b3%db%8c.aspx",
   },
   web: {
     title: "طراحی سایت",
@@ -21,7 +21,7 @@ const courses = {
     skills: ["HTML", "CSS", "Responsive Design", "JavaScript"],
     output: "یک وب‌سایت واکنش‌گرا با چند تعامل کاربردی.",
     prereq: "مبانی برنامه‌نویسی یا مهارت معادل",
-    link: null,
+    link: "https://tahlildadeh.com/coursedetails/28/%d8%af%d9%88%d8%b1%d9%87-%d8%a2%d9%85%d9%88%d8%b2%d8%b4-%d8%b7%d8%b1%d8%a7%d8%ad%db%8c-%d8%b3%d8%a7%db%8c%d8%aa-web-design.aspx",
   },
   sql: {
     title: "SQL Server",
@@ -35,7 +35,7 @@ const courses = {
     ],
     output: "طراحی پایگاه داده یک سامانه واقعی همراه با کوئری‌های قابل‌بررسی.",
     prereq: "آشنایی اولیه با منطق برنامه‌نویسی و داده",
-    link: null,
+    link: "https://tahlildadeh.com/coursedetails/27/%d8%a2%d9%85%d9%88%d8%b2%d8%b4-sql-server.aspx",
   },
   csharp: {
     title: "C# و ASP.NET Core پروژه‌محور",
@@ -50,7 +50,7 @@ const courses = {
     output:
       "فروشگاه تحت هدایت مدرس و سامانه آگهی مستقل؛ از مدل و دیتابیس تا API و انتشار.",
     prereq: "مبانی برنامه‌نویسی، طراحی وب و SQL یا مهارت معادل",
-    link: null,
+    link: "https://tahlildadeh.com/coursedetails/114/%d8%a2%d9%85%d9%88%d8%b2%d8%b4-%d8%b3%db%8c-%d8%b4%d8%a7%d8%b1%d9%be.aspx",
   },
   advanced: {
     title: "C# پیشرفته، Design Patterns و Clean Architecture",
@@ -59,7 +59,7 @@ const courses = {
     skills: ["Advanced C#", "Design Patterns", "Clean Architecture", "Testing"],
     output: "پیاده‌سازی و بازنگری معماری یک پروژه چندلایه با تحویل و ارزیابی.",
     prereq: "توانایی ساخت مستقل API با C# و دیتابیس",
-    link: null,
+    link: "https://tahlildadeh.com/coursedetails/1158/%d8%a2%d9%85%d9%88%d8%b2%d8%b4-%d8%b4%db%8c-%da%af%d8%b1%d8%a7%db%8c%db%8c.aspx",
   },
   pro: {
     title: "ASP.NET Core حرفه‌ای با AI، امنیت و CI/CD",
@@ -68,7 +68,7 @@ const courses = {
     skills: ["امنیت کاربردی", "CI/CD", "DevOps و Docker", "AI در فرایند توسعه"],
     output: "یک سامانه حرفه‌ای با مسیر توسعه، تست و انتشار قابل‌تکرار.",
     prereq: "تسلط عملی بر ASP.NET Core و اصول معماری",
-    link: null,
+    link: "https://www.tahlildadeh.com/coursedetails/83/%d8%af%d9%88%d8%b1%d9%87-%d8%a2%d9%85%d9%88%d8%b2%d8%b4-mvc.aspx"
   },
   react: {
     title: "React و Next.js",
@@ -82,7 +82,7 @@ const courses = {
     ],
     output: "یک وب‌اپلیکیشن چندصفحه‌ای داده‌محور و واکنش‌گرا.",
     prereq: "HTML، CSS و JavaScript در حد ساخت مستقل صفحه",
-    link: null,
+    link: "https://tahlildadeh.com/coursedetails/1166/%d8%af%d9%88%d8%b1%d9%87-%d8%a2%d9%85%d9%88%d8%b2%d8%b4-%d8%ac%d8%a7%d9%85%d8%b9-%da%a9%d8%a7%d8%b1%d8%a8%d8%b1%d8%af%db%8c-front-end.aspx",
   },
   python: {
     title: "پایتون جامع",
@@ -91,7 +91,7 @@ const courses = {
     skills: ["Python", "توابع و ماژول‌ها", "JSON/CSV", "SQLite"],
     output: "چند ابزار کاربردی برای مدیریت داده و کارهای تکراری.",
     prereq: "بدون پیش‌نیاز",
-    link: null,
+    link: "https://tahlildadeh.com/coursedetails/1165/%d8%af%d9%88%d8%b1%d9%87-%d8%a2%d9%85%d9%88%d8%b2%d8%b4%db%8c-%d9%be%d8%a7%db%8c%d8%aa%d9%88%d9%86.aspx",
   },
   mldl: {
     title: "یادگیری ماشین و یادگیری عمیق",
@@ -106,7 +106,7 @@ const courses = {
     output:
       "ساخت و ارزیابی یک مدل روی داده واقعی با گزارش معیارها و محدودیت‌ها.",
     prereq: "پایتون عملی و ریاضی موردنیاز مدل‌سازی",
-    link: null,
+    link: "https://www.tahlildadeh.com/coursedetails/1184/%d8%af%d9%88%d8%b1%d9%87-%d8%a2%d9%85%d9%88%d8%b2%d8%b4-%d8%af%d8%a7%d8%af%d9%87-%da%a9%d8%a7%d9%88%db%8c.aspx"
   },
   llm: {
     title: "مهندسی LLM، RAG و هوش مصنوعی مولد",
@@ -115,7 +115,7 @@ const courses = {
     skills: ["LLM Integration", "Embeddings", "RAG", "Evaluation و Guardrails"],
     output: "دستیار پاسخ‌گو به اسناد با ارجاع به منبع، ارزیابی خطا و هزینه.",
     prereq: "پایتون و مفاهیم پایه مدل‌های هوش مصنوعی",
-    link: null,
+    link: "https://www.tahlildadeh.com/coursedetails/1220/llm-rag-generative-ai-course.aspx",
   },
 };
 
