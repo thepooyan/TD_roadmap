@@ -183,15 +183,18 @@ const createStep = (data, index) => {
 
     return el
 }
+const step_click_event = (e) => {
+    shell_steps.querySelector(".selected").classList.remove("selected");
+    e.currentTarget.classList.add("selected");
+}
+shell_steps.querySelectorAll(".step").forEach(s => s.addEventListener("click", step_click_event));
+
 const createSteps = (steps) => {
     const all = [] 
     steps.forEach((step, i) => {
         const data = courses[step];
         const el = createStep(data, i+1)
-        el.addEventListener("click", () => {
-            shell_steps.querySelector(".selected").classList.remove("selected");
-            el.classList.add("selected");
-        })
+        el.addEventListener("click", step_click_event)
         all.push(el)
     })
     return all
