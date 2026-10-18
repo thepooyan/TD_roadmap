@@ -109,6 +109,7 @@
   color: #304360;
   position: relative;
   z-index: 1;
+  transition: all .2s;
 
   &.selected {
     background: var(--accentSoft);
@@ -144,6 +145,7 @@
   place-items: center;
   font-size: 12px;
   font-weight: 900;
+  transition: inherit;
 }
 
 .step-text {
