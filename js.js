@@ -197,9 +197,9 @@ const render = (path) => {
     shell.style.setProperty("--accentSoft", `var(--color-${color}-background)`)
 
     const shell_top = shell.querySelector(".shell-top")
-    shell_top.querySelector("span").innerText = `مسیر ${numberToPersian(order)} از 3 `;
-    shell_top.querySelector("h2").innerText = title;
-    shell_top.querySelector("p").innerText = sub;
+    shell_top.querySelector("#pathNumber").innerText = `مسیر ${numberToPersian(order)} از 3 `;
+    shell_top.querySelector("#roadmapTitle").innerText = title;
+    shell_top.querySelector("#roadmapSub").innerText = sub;
 
     const shell_steps = shell.querySelector("#stageList");
     shell_steps.innerText = "";
