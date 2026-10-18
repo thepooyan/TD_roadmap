@@ -2,7 +2,7 @@
     --color: var(--color-btn);
     --bg: var(--color-btn-background);
     --color-hover: var(--color);
-    --bg-hover: var(--color-btn-hover);
+    --bg-hover: color-mix(in srgb, var(--bg), black 10%);
     background-color: var(--bg);
     color: var(--color);
     transition: all .2s;
