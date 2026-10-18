@@ -6,8 +6,8 @@
   overflow: hidden;
   padding: 0;
 
-  --accentSoft: var(--color-front-background);
-  --accent: var(--color-front);
+  --accentSoft: var(--color-back-background);
+  --accent: var(--color-back);
   // color: var(--color-gray-800);
   --line: var(--color-gray-100);
 }
@@ -109,7 +109,7 @@
 
   &.selected {
     background: var(--accentSoft);
-    border-color: var(--accentLight);
+    border-color: var(--accent);
 
     .step-num {
       border-color: var(--accent);
