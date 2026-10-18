@@ -143,6 +143,12 @@ const paths = {
 };
 const shell = document.getElementById("roadmap_shell");
 const shell_steps = shell.querySelector("#stageList");
+const shell_title = shell.querySelector("#detail-title")
+const shell_desc = shell.querySelector("#detail-desc")
+const shell_link = shell.querySelector("#detail-link")
+const shell_output = shell.querySelector("#detail-output")
+const shell_prereq = shell.querySelector("#detail-prereq")
+const shell_skills = shell.querySelector("#detail-skills")
 const numberToPersian = (number) => {
     switch(number) {
         case 1:
@@ -153,11 +159,12 @@ const numberToPersian = (number) => {
             return "سوم"
     }
 }
-const createStep = (data, index) => {
+const createStep = (data, index, step) => {
     const {title, sub, desc, skills, output, prereq, link} = data;
     const el = document.createElement("button");
     el.classList.add("step");
     if (index === 1) el.classList.add("selected")
+    el.dataset.step = step;
 
     const span1 = document.createElement("span");
     span1.classList.add("step-num")
@@ -183,9 +190,29 @@ const createStep = (data, index) => {
 
     return el
 }
+const insertSkills = (skills, parent) => {
+    parent.innerText = "";
+    skills.forEach(s => {
+        const span = document.createElement("span")
+        span.innerText = s;
+        parent.appendChild(span)
+    })
+}
+const renderDetails = (data) => {
+    const { desc, link, output, prereq, skills, title } = data
+    shell_desc.innerText = desc;
+    shell_title.innerText = title;
+    shell_output.innerText = output;
+    shell_prereq.innerText = prereq;
+    shell_link.setAttribute("href", link)
+    insertSkills(skills, shell_skills);
+} 
 const step_click_event = (e) => {
     shell_steps.querySelector(".selected").classList.remove("selected");
     e.currentTarget.classList.add("selected");
+    const targetStep = e.currentTarget.dataset.step;
+    const targetData = courses[targetStep]
+    renderDetails(targetData)
 }
 shell_steps.querySelectorAll(".step").forEach(s => s.addEventListener("click", step_click_event));
 
@@ -193,7 +220,7 @@ const createSteps = (steps) => {
     const all = [] 
     steps.forEach((step, i) => {
         const data = courses[step];
-        const el = createStep(data, i+1)
+        const el = createStep(data, i+1, step)
         el.addEventListener("click", step_click_event)
         all.push(el)
     })

@@ -679,55 +679,7 @@
       <div class="shell-content">
         <div class="stage-pane">
           <p class="hint">مراحل مسیر — برای دیدن جزئیات انتخاب کن</p>
-          <div class="steps" id="stageList" aria-label="فهرست مراحل">
-            <button class="step selected " data-step="0" type="button" aria-current="step">
-              <span class="step-num">01</span>
-              <span class="step-text">
-                <span class="step-title">مبانی برنامه‌نویسی</span>
-                <span class="step-subtitle">یاد بگیر چطور مسئله رو به الگوریتم تبدیل کنی</span>
-              </span><span class="step-arrow" aria-hidden="true">‹</span>
-            </button>
-            <button class="step  " data-step="1" type="button" aria-current="false">
-              <span class="step-num">02</span>
-              <span class="step-text">
-                <span class="step-title">طراحی سایت</span>
-                <span class="step-subtitle">صفحه‌های واکنش‌گرا بساز</span>
-              </span>
-              <span class="step-arrow" aria-hidden="true">‹</span>
-            </button>
-            <button class="step  " data-step="2" type="button" aria-current="false">
-              <span class="step-num">03</span>
-              <span class="step-text">
-                <span class="step-title">SQL Server</span>
-                <span class="step-subtitle">داده رو درست مدل‌سازی و بازیابی کن</span>
-              </span>
-              <span class="step-arrow" aria-hidden="true">‹</span>
-            </button>
-            <button class="step" data-step="3" type="button" aria-current="false">
-              <span class="step-num">04</span>
-              <span class="step-text">
-                <span class="step-title">C# و ASP.NET Core پروژه‌محور</span>
-                <span class="step-subtitle">از کد تا ساخت و انتشار بک‌اند</span>
-              </span>
-              <span class="step-arrow" aria-hidden="true">‹</span>
-            </button>
-            <button class="step" data-step="4" type="button" aria-current="false">
-              <span class="step-num">05</span>
-              <span class="step-text">
-                <span class="step-title">C# پیشرفته، Design Patterns و Clean Architecture</span>
-                <span class="step-subtitle">ساختاردهی مهندسی پروژه‌های پیچیده‌تر</span>
-              </span>
-              <span class="step-arrow" aria-hidden="true">‹</span>
-            </button>
-            <button class="step  " data-step="5" type="button" aria-current="false">
-              <span class="step-num">06</span>
-              <span class="step-text">
-                <span class="step-title">ASP.NET Core حرفه‌ای با AI، امنیت و CI/CD</span>
-                <span class="step-subtitle">ساخت، ایمن‌سازی و تحویل نرم‌افزار حرفه‌ای</span>
-              </span>
-              <span class="step-arrow" aria-hidden="true">‹</span>
-            </button>
-          </div>
+         <div class="steps" id="stageList" aria-label="فهرست مراحل"><button class="step selected" data-step="foundations"><span class="step-num">01</span><span class="step-text"><span class="step-title">مبانی برنامه‌نویسی</span><span class="step-subtitle">یاد بگیر چطور مسئله رو به الگوریتم تبدیل کنی</span></span><span class="step-arrow">‹</span></button><button class="step" data-step="web"><span class="step-num">02</span><span class="step-text"><span class="step-title">طراحی سایت</span><span class="step-subtitle">صفحه‌های واکنش‌گرا بساز</span></span><span class="step-arrow">‹</span></button><button class="step" data-step="sql"><span class="step-num">03</span><span class="step-text"><span class="step-title">SQL Server</span><span class="step-subtitle">داده رو درست مدل‌سازی و بازیابی کن</span></span><span class="step-arrow">‹</span></button><button class="step" data-step="csharp"><span class="step-num">04</span><span class="step-text"><span class="step-title">C# و ASP.NET Core پروژه‌محور</span><span class="step-subtitle">از کد تا ساخت و انتشار بک‌اند</span></span><span class="step-arrow">‹</span></button><button class="step" data-step="advanced"><span class="step-num">05</span><span class="step-text"><span class="step-title">C# پیشرفته، Design Patterns و Clean Architecture</span><span class="step-subtitle">ساختاردهی مهندسی پروژه‌های پیچیده‌تر</span></span><span class="step-arrow">‹</span></button><button class="step" data-step="pro"><span class="step-num">06</span><span class="step-text"><span class="step-title">ASP.NET Core حرفه‌ای با AI، امنیت و CI/CD</span><span class="step-subtitle">ساخت، ایمن‌سازی و تحویل نرم‌افزار حرفه‌ای</span></span><span class="step-arrow">‹</span></button></div>
         </div>
         <div class="detail-pane space-y-4" id="stageDetail">
           <div class="detail-overline">
@@ -735,11 +687,11 @@
              مسیر پیشنهادی
           </div>
           <h3 id="detail-title" class="font-subtitle">مبانی برنامه‌نویسی</h3>
-          <p class="font-span">
+          <p class="font-span" id="detail-desc">
             از منطق برنامه‌نویسی، الگوریتم، شرط و حلقه شروع کن تا کد برات فقط حفظ کردن دستورها نباشه.
           </p>
           <h4 class="feature-title">مهارت‌های اصلی این مرحله</h4>
-          <div class="tag-list">
+          <div class="tag-list" id="detail-skills">
             <span>الگوریتم و فلوچارت</span>
             <span>شرط و حلقه</span>
             <span>مبانی JavaScript</span>
@@ -754,14 +706,17 @@
             </svg>
 
             <div><strong>در پایان، چه چیزی می‌تونی بسازی؟</strong>
-              <p>چند برنامه کوچک تعاملی که ورودی می‌گیرن، تصمیم می‌گیرن و داده رو ذخیره می‌کنن.</p>
+              <p id="detail-output">چند برنامه کوچک تعاملی که ورودی می‌گیرن، تصمیم می‌گیرن و داده رو ذخیره می‌کنن.</p>
             </div>
           </div>
           <p class="prereq">
-            <strong>پیش‌نیاز:</strong> بدون پیش‌نیاز
+            <strong>پیش‌نیاز:</strong>
+            <span id="detail-prereq">
+             بدون پیش‌نیاز
+            </span>
           </p>
           <div class="detail-actions">
-            <a class="primary-btn" href="tel:09039737027" id="courseLink">مشاهده صفحه دوره ↗</a>
+            <a class="primary-btn" href="tel:09039737027" id="detail-link">مشاهده صفحه دوره ↗</a>
             <button type="button" class="link-btn" id="nextStage">مرحله بعد ←</button>
           </div>
         </div>
