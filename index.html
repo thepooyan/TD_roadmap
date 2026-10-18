@@ -729,25 +729,41 @@
             </button>
           </div>
         </div>
-        <div class="detail-pane" id="stageDetail">
-          <div class="detail-overline"><span class="pill">مرحله 1 از 6</span> مسیر پیشنهادی</div>
-          <h3>مبانی برنامه‌نویسی</h3>
-          <p class="detail-desc">از منطق برنامه‌نویسی، الگوریتم، شرط و حلقه شروع کن تا کد برات فقط حفظ کردن دستورها
-            نباشه.</p>
+        <div class="detail-pane space-y-4" id="stageDetail">
+          <div class="detail-overline">
+            <span class="pill">مرحله <span id="step">1</span> از <span id="stepCount">6</span> </span>
+             مسیر پیشنهادی
+          </div>
+          <h3 id="detail-title" class="font-subtitle">مبانی برنامه‌نویسی</h3>
+          <p class="font-span">
+            از منطق برنامه‌نویسی، الگوریتم، شرط و حلقه شروع کن تا کد برات فقط حفظ کردن دستورها نباشه.
+          </p>
           <h4 class="feature-title">مهارت‌های اصلی این مرحله</h4>
-          <div class="tag-list"><span class="tag">الگوریتم و فلوچارت</span><span class="tag">شرط و حلقه</span><span
-              class="tag">مبانی JavaScript</span><span class="tag">حل مسئله</span></div>
+          <div class="tag-list">
+            <span>الگوریتم و فلوچارت</span>
+            <span>شرط و حلقه</span>
+            <span>مبانی JavaScript</span>
+            <span>حل مسئله</span>
+          </div>
           <h4 class="feature-title">خروجی عملی پیشنهادی</h4>
-          <div class="outcome"><span class="outcome-icon" aria-hidden="true">▧</span>
+          <div class="outcome">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32" class="outcome-icon" aria-hidden="true">
+              <path d="M0 0h32v32H0z" fill="none" />
+              <path fill="currentColor" d="M14 23h8v2h-8zm-4 0h2v2h-2zm4-5h8v2h-8zm-4 0h2v2h-2zm4-5h8v2h-8zm-4 0h2v2h-2z" />
+              <path fill="currentColor" d="M25 5h-3V4a2 2 0 0 0-2-2h-8a2 2 0 0 0-2 2v1H7a2 2 0 0 0-2 2v21a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2M12 4h8v4h-8Zm13 24H7V7h3v3h12V7h3Z" />
+            </svg>
+
             <div><strong>در پایان، چه چیزی می‌تونی بسازی؟</strong>
               <p>چند برنامه کوچک تعاملی که ورودی می‌گیرن، تصمیم می‌گیرن و داده رو ذخیره می‌کنن.</p>
             </div>
           </div>
-          <p class="prereq"><strong>پیش‌نیاز:</strong> بدون پیش‌نیاز</p><label class="selfcheck"><input type="checkbox"
-              id="selfCheck"><span>می‌تونم خروجی این مرحله رو مستقل بسازم</span></label><span class="footnote">این تیک
-            فقط خودارزیابیه؛ به معنی گذراندن دوره یا تأیید مدرس نیست.</span>
-          <div class="detail-actions"><a class="primary-btn" href="tel:09039737027" id="courseLink">مشاوره درباره این
-              مرحله ↗</a><button type="button" class="link-btn" id="nextStage">مرحله بعد ←</button></div>
+          <p class="prereq">
+            <strong>پیش‌نیاز:</strong> بدون پیش‌نیاز
+          </p>
+          <div class="detail-actions">
+            <a class="primary-btn" href="tel:09039737027" id="courseLink">مشاهده صفحه دوره ↗</a>
+            <button type="button" class="link-btn" id="nextStage">مرحله بعد ←</button>
+          </div>
         </div>
       </div>
       <div class="shell-footer">
@@ -755,11 +771,12 @@
           این نقشه راه برنامه پیشنهادی یادگیریه، نه گواهی مهارت یا تضمین
           استخدام.
         </span>
-        <button id="sharePath" type="button">↗ اشتراک‌گذاری همین مسیر</button>
+        <button id="sharePath" type="button">↗ اشتراک‌گذاری این مسیر</button>
       </div>
     </section>
   </main>
 
+  <link href="./Content/components/course/_utilityClasses.css" rel="stylesheet" />
   <link href="./style.scss" rel="stylesheet" />
   <script type="module" src="js.js" defer></script>
 </body>

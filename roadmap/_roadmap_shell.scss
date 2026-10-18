@@ -175,12 +175,6 @@
   padding: 32px 33px;
   display: flex;
   flex-direction: column;
-
-  h3 {
-    font-size: 25px;
-    line-height: 1.65;
-    margin: 15px 0 8px;
-  }
 }
 
 .detail-overline {
@@ -201,6 +195,7 @@
   background: var(--accentSoft);
   font-size: 10px;
   font-weight: 800;
+  gap: .2rem;
 }
 
 .detail-desc {
@@ -221,15 +216,15 @@
   gap: 8px;
   flex-wrap: wrap;
   margin-bottom: 22px;
-}
 
-.tag {
-  background: #f5f7fb;
-  border: 1px solid #e8edf4;
-  border-radius: 8px;
-  color: #596a7e;
-  font-size: 11px;
-  padding: 4px 10px;
+  span {
+    background: #f5f7fb;
+    border: 1px solid #e8edf4;
+    border-radius: 8px;
+    color: #596a7e;
+    font-size: 11px;
+    padding: 4px 10px;
+  }
 }
 
 .outcome {
@@ -262,11 +257,10 @@
   border-radius: 10px;
   display: grid;
   place-items: center;
-  font-size: 19px;
+  padding: 4px;
 }
 
 .prereq {
-  margin: 17px 0 0;
   font-size: 11px;
   color: #637992;
 }
