@@ -142,6 +142,7 @@ const paths = {
   },
 };
 const shell = document.getElementById("roadmap_shell");
+const shell_steps = shell.querySelector("#stageList");
 const numberToPersian = (number) => {
     switch(number) {
         case 1:
@@ -187,6 +188,10 @@ const createSteps = (steps) => {
     steps.forEach((step, i) => {
         const data = courses[step];
         const el = createStep(data, i+1)
+        el.addEventListener("click", () => {
+            shell_steps.querySelector(".selected").classList.remove("selected");
+            el.classList.add("selected");
+        })
         all.push(el)
     })
     return all
@@ -200,7 +205,6 @@ const render = (path) => {
     shell_top.querySelector("#roadmapTitle").innerText = title;
     shell_top.querySelector("#roadmapSub").innerText = sub;
 
-    const shell_steps = shell.querySelector("#stageList");
     shell_steps.innerText = "";
     createSteps(steps).forEach(s => shell_steps.appendChild(s))
 }
