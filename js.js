@@ -151,6 +151,10 @@ const shell_prereq = shell.querySelector("#detail-prereq")
 const shell_skills = shell.querySelector("#detail-skills")
 const shell_step = shell.querySelector("#detail-step")
 const shell_stepCount = shell.querySelector("#detail-stepCount")
+const shell_top = shell.querySelector(".shell-top")
+const shell_pathNumber = shell_top.querySelector("#pathNumber");
+const shell_roadmapTitle = shell_top.querySelector("#roadmapTitle");
+const shell_roadmapSub = shell_top.querySelector("#roadmapSub");
 const numberToPersian = (number) => {
     switch(number) {
         case 1:
@@ -235,10 +239,10 @@ const render = (path) => {
     const {color, sub, title, steps, order} = path
     shell.style.setProperty("--accent", `var(--color-${color})`)
 
-    const shell_top = shell.querySelector(".shell-top")
-    shell_top.querySelector("#pathNumber").innerText = `مسیر ${numberToPersian(order)} از 3 `;
-    shell_top.querySelector("#roadmapTitle").innerText = title;
-    shell_top.querySelector("#roadmapSub").innerText = sub;
+    shell_pathNumber.innerText = `مسیر ${numberToPersian(order)} از 3 `;
+    shell_roadmapTitle.innerText = title;
+    shell_roadmapSub.innerText = sub;
+    shell_step.innerText = 1;
     shell_stepCount.innerText = steps.length
 
     shell_steps.innerText = "";
