@@ -659,97 +659,22 @@
 
     <section id="roadmap_shell" class="container font-p">
       <div class="shell-top">
-        <span class="font-span text-td">مسیر سوم از ۳</span>
-        <h2 class="font-subtitle">نقشه راه هوش مصنوعی</h2>
-        <p>از پایتون تا ML، DL و مهندسی LLM</p>
+        <div><span class="track-eyebrow" id="pathNumber">مسیر اول از ۳</span>
+          <h2 id="roadmapTitle">نقشه راه بک‌اند با دات‌نت</h2>
+          <p id="roadmapSub">از پایه برنامه‌نویسی تا توسعه نرم‌افزار سمت سرور</p>
+        </div>
       </div>
-
       <div class="shell-content">
         <div class="stage-pane">
           <p class="hint">مراحل مسیر — برای دیدن جزئیات انتخاب کن</p>
-          <div class="steps" id="stageList" aria-label="فهرست مراحل">
-            <button class="step" data-step="0" type="button" aria-current="false">
-              <span class="step-num">01</span>
-              <span class="step-text">
-                <span class="step-title">پایتون جامع</span>
-                <span class="step-subtitle">زبان، منطق و ابزارهای پایه</span>
-              </span>
-              <span class="step-arrow" aria-hidden="true">‹</span>
-            </button>
-            <button class="step" data-step="1" type="button" aria-current="false">
-              <span class="step-num">02</span>
-              <span class="step-text">
-                <span class="step-title">یادگیری ماشین و یادگیری عمیق</span>
-                <span class="step-subtitle">از داده خام تا مدل قابل‌ارزیابی</span>
-              </span>
-              <span class="step-arrow" aria-hidden="true">‹</span>
-            </button>
-            <button class="step selected" data-step="2" type="button" aria-current="step">
-              <span class="step-num">03</span>
-              <span class="step-text">
-                <span class="step-title">مهندسی LLM، RAG و هوش مصنوعی مولد</span>
-                <span class="step-subtitle">ساخت محصول مبتنی بر مدل زبانی</span>
-              </span>
-              <span class="step-arrow" aria-hidden="true">‹</span>
-            </button>
-          </div>
+          <div class="steps" id="stageList" aria-label="فهرست مراحل"><button class="step selected " data-step="0" type="button" aria-current="step"><span class="step-num">01</span><span class="step-text"><span class="step-title">مبانی برنامه‌نویسی</span><span class="step-subtitle">یاد بگیر چطور مسئله رو به الگوریتم تبدیل کنی</span></span><span class="step-arrow" aria-hidden="true">‹</span></button><button class="step  " data-step="1" type="button" aria-current="false"><span class="step-num">02</span><span class="step-text"><span class="step-title">طراحی سایت</span><span class="step-subtitle">صفحه‌های واکنش‌گرا بساز</span></span><span class="step-arrow" aria-hidden="true">‹</span></button><button class="step  " data-step="2" type="button" aria-current="false"><span class="step-num">03</span><span class="step-text"><span class="step-title">SQL Server</span><span class="step-subtitle">داده رو درست مدل‌سازی و بازیابی کن</span></span><span class="step-arrow" aria-hidden="true">‹</span></button><button class="step  " data-step="3" type="button" aria-current="false"><span class="step-num">04</span><span class="step-text"><span class="step-title">C# و ASP.NET Core پروژه‌محور</span><span class="step-subtitle">از کد تا ساخت و انتشار بک‌اند</span></span><span class="step-arrow" aria-hidden="true">‹</span></button><button class="step  " data-step="4" type="button" aria-current="false"><span class="step-num">05</span><span class="step-text"><span class="step-title">C# پیشرفته، Design Patterns و Clean Architecture</span><span class="step-subtitle">ساختاردهی مهندسی پروژه‌های پیچیده‌تر</span></span><span class="step-arrow" aria-hidden="true">‹</span></button><button class="step  " data-step="5" type="button" aria-current="false"><span class="step-num">06</span><span class="step-text"><span class="step-title">ASP.NET Core حرفه‌ای با AI، امنیت و CI/CD</span><span class="step-subtitle">ساخت، ایمن‌سازی و تحویل نرم‌افزار حرفه‌ای</span></span><span class="step-arrow" aria-hidden="true">‹</span></button></div>
         </div>
-
-        <div class="detail-pane" id="stageDetail">
-          <div class="detail-overline">
-            <span class="pill">مرحله 3 از 3</span>
-            مسیر پیشنهادی
-          </div>
-          <h3>مهندسی LLM، RAG و هوش مصنوعی مولد</h3>
-          <p class="detail-desc">
-            مدل‌های زبانی رو به داده معتبر، بازیابی و ارزیابی وصل کن تا محصول قابل‌کنترل بسازی.
-          </p>
-
-          <h4 class="feature-title">مهارت‌های اصلی این مرحله</h4>
-          <div class="tag-list">
-            <span class="tag">LLM Integration</span>
-            <span class="tag">Embeddings</span>
-            <span class="tag">RAG</span>
-            <span class="tag">Evaluation و Guardrails</span>
-          </div>
-
-          <h4 class="feature-title">خروجی عملی پیشنهادی</h4>
-          <div class="outcome">
-            <span class="outcome-icon" aria-hidden="true">▧</span>
-            <div>
-              <strong>در پایان، چه چیزی می‌تونی بسازی؟</strong>
-              <p>دستیار پاسخ‌گو به اسناد با ارجاع به منبع، ارزیابی خطا و هزینه.</p>
-            </div>
-          </div>
-
-          <p class="prereq">
-            <strong>پیش‌نیاز:</strong>
-            پایتون و مفاهیم پایه مدل‌های هوش مصنوعی
-          </p>
-
-          <label class="selfcheck">
-            <input type="checkbox" id="selfCheck">
-            <span>می‌تونم خروجی این مرحله رو مستقل بسازم</span>
-          </label>
-
-          <span class="footnote">
-            این تیک فقط خودارزیابیه؛ به معنی گذراندن دوره یا تأیید مدرس نیست.
-          </span>
-
-          <div class="detail-actions">
-            <a class="primary-btn" href="tel:09039737027" id="courseLink">
-              مشاوره درباره این مرحله ↗
-            </a>
-            <button type="button" class="link-btn" id="nextStage" disabled="">
-              مرحله بعد ←
-            </button>
-          </div>
-        </div>
+        <div class="detail-pane" id="stageDetail"><div class="detail-overline"><span class="pill">مرحله 1 از 6</span> مسیر پیشنهادی</div><h3>مبانی برنامه‌نویسی</h3><p class="detail-desc">از منطق برنامه‌نویسی، الگوریتم، شرط و حلقه شروع کن تا کد برات فقط حفظ کردن دستورها نباشه.</p><h4 class="feature-title">مهارت‌های اصلی این مرحله</h4><div class="tag-list"><span class="tag">الگوریتم و فلوچارت</span><span class="tag">شرط و حلقه</span><span class="tag">مبانی JavaScript</span><span class="tag">حل مسئله</span></div><h4 class="feature-title">خروجی عملی پیشنهادی</h4><div class="outcome"><span class="outcome-icon" aria-hidden="true">▧</span><div><strong>در پایان، چه چیزی می‌تونی بسازی؟</strong><p>چند برنامه کوچک تعاملی که ورودی می‌گیرن، تصمیم می‌گیرن و داده رو ذخیره می‌کنن.</p></div></div><p class="prereq"><strong>پیش‌نیاز:</strong> بدون پیش‌نیاز</p><label class="selfcheck"><input type="checkbox" id="selfCheck"><span>می‌تونم خروجی این مرحله رو مستقل بسازم</span></label><span class="footnote">این تیک فقط خودارزیابیه؛ به معنی گذراندن دوره یا تأیید مدرس نیست.</span><div class="detail-actions"><a class="primary-btn" href="tel:09039737027" id="courseLink">مشاوره درباره این مرحله ↗</a><button type="button" class="link-btn" id="nextStage">مرحله بعد ←</button></div></div>
       </div>
-
       <div class="shell-footer">
         <span>
-          این نقشه راه برنامه پیشنهادی یادگیریه، نه گواهی مهارت یا تضمین استخدام.
+          این نقشه راه برنامه پیشنهادی یادگیریه، نه گواهی مهارت یا تضمین
+          استخدام.
         </span>
         <button id="sharePath" type="button">↗ اشتراک‌گذاری همین مسیر</button>
       </div>
