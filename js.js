@@ -313,6 +313,24 @@ cards.forEach((card) => {
   });
 });
 
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const target = document.querySelector(link.getAttribute("href"));
+
+    if (!target) return;
+
+    event.preventDefault();
+
+    const top =
+      target.getBoundingClientRect().top + window.scrollY - 100;
+
+    window.scrollTo({
+      top,
+      behavior: "smooth",
+    });
+  });
+});
+
 // const stepsSection = document.querySelector("#stageList")
 // if (stepsSection) {
 //     const steps = stepsSection.querySelectorAll("button.step");
