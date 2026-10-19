@@ -469,6 +469,7 @@ if (questionnaire) {
     resultBox.classList.add("hidden")
     next.classList.remove("hidden")
     currentStage = 1;
+    votes.frontend = 0;votes.backend = 0;votes.ai = 0;
     applyStage(stages[1])
   }
 }
