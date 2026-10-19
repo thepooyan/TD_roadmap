@@ -60,6 +60,9 @@
                 gap: 10px;
                 align-items: center;
                 background: transparent;
+                font-weight: var(--weight_sm);
+                font-size: 13px;
+                color: var(--color-gray-700);
 
                 &.selected {
                     border-color: var(--color-gray-600);
