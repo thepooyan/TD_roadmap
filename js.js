@@ -405,6 +405,7 @@ if (questionnaire) {
   questions.forEach(Q => {
     Q.onclick = () => {
       Q.classList.toggle("selected");
+      next.disabled = false;
     }
   })
   stageCountEl.innerText = stageCount
@@ -430,6 +431,7 @@ if (questionnaire) {
         const newText = stage.questions[Q.dataset.target]
         Q.innerText = newText
       })
+      next.disabled = true
   }
   const votes = {
     frontend: 0,
@@ -503,6 +505,7 @@ if (questionnaire) {
     currentStage = 1;
     currentStageEl.innerText = currentStage
     next.innerText = "سوال بعدی"
+    next.disabled = true;
     votes.frontend = 0;votes.backend = 0;votes.ai = 0;
     applyStage(stages[1])
   }

@@ -111,11 +111,14 @@
             width: max-content;        
             transition: all .2s;
 
-            &:hover {
+            &:hover:not(:disabled) {
                 translate: 0 -2px;
                 background: var(--color-gray-700);
-
             } 
+            &:disabled {
+                cursor: not-allowed;
+                opacity: .5;
+            }
         }
     }
 }
