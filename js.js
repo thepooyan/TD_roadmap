@@ -362,30 +362,19 @@ if (questionnaire) {
       }
     },
   }
+  const resultDesc = "انتخاب‌های شما در خروجی و نوع کار، هر دو به این مسیر اشاره کردند."
   const resultData = {
     front: {
-      title: "برای نتیجه بهتر، از فرانت‌اند شروع کن.",
-      desc: "انتخاب‌های شما در خروجی و نوع کار، هر دو به این مسیر اشاره کردند.",
       htmlTarget: "[data-path='frontend']",
-      label: "مشاهده نقشه راه فرانت اند",
+      label: "فرانت اند",
     },
     back: {
-      title: "",
-      desc: "",
-      link: "",
-      label: "",
+      htmlTarget: "[data-path='backend']",
+      label: "بک اند",
     },
     ai: {
-      title: "",
-      desc: "",
-      link: "",
-      label: "",
-    },
-    unkown: {
-      title: "",
-      desc: "",
-      link: "",
-      label: "",
+      htmlTarget: "[data-path='ai']",
+      label: "هوش مصنوعی",
     }
   }
 
@@ -404,10 +393,10 @@ if (questionnaire) {
   })
 
   const showResult = r => {
-    title.innerText = r.title;
-    desc.innerText = r.desc;
+    title.innerText = `برای نتیجه بهتر، از ${r.label} شروع کن.`;
+    desc.innerText = resultDesc;
     resultBox.classList.remove("hidden")
-    result.innerText = r.label;
+    result.innerText = `نقشه راه ${r.label}`;
     result.dataset.target = r.htmlTarget;
     next.classList.add("hidden")
     questionsBox.classList.add("hidden")
@@ -428,7 +417,7 @@ if (questionnaire) {
       applyStage(stages[2])
     }
     if (currentStage === 2) {
-      showResult(resultData.front)
+      showResult(resultData.ai)
     }
 
     currentStage++;
@@ -444,5 +433,4 @@ if (questionnaire) {
     currentStage = 1;
     applyStage(stages[1])
   }
-  console.log(questions)
 }
