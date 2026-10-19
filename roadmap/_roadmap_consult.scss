@@ -1,0 +1,22 @@
+#roadmap_consult {
+    display: flex;
+    gap: 3rem;
+
+    .right {}
+    .left {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .phone {
+            display: flex;
+            justify-content: space-between;
+            font-size: 25px;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid var(--color-gray-300);
+            padding: 10px 0;
+            margin-bottom: 12px;
+        }
+    }
+}
