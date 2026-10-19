@@ -1,8 +1,19 @@
 #roadmap_consult {
     display: flex;
-    gap: 3rem;
+    justify-content: space-between;
+    gap: 2rem;
 
-    .right {}
+    .right {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: flex-start;
+        max-width: 30rem;
+
+        .button {
+            font-weight: var(--weight_sm);
+        }
+    }
     .left {
         display: flex;
         flex-direction: column;
@@ -17,6 +28,19 @@
             border-bottom: 1px solid var(--color-gray-300);
             padding: 10px 0;
             margin-bottom: 12px;
+        }
+        .telegram, .bale {
+            --size: 3rem;
+            width: var(--size);
+            height: var(--size);
+            padding: 10px;
+            border-radius: 100%;
+        }
+        .telegram {
+            background-color: var(--telegram);
+        }
+        .bale {
+            background-color: var(--bale);
         }
     }
 }
