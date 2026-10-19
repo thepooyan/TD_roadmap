@@ -371,6 +371,7 @@ if (questionnaire) {
 
   const resultBox = questionnaire.querySelector(".resultBox");
   const result = questionnaire.querySelector(".js-result");
+  const resultBtns = questionnaire.querySelectorAll(".js-resultBtn")
   const reset = questionnaire.querySelector(".js-reset");
   const title = questionnaire.querySelector(".title");
   const desc = questionnaire.querySelector(".desc");
@@ -456,10 +457,13 @@ if (questionnaire) {
 
     currentStage++;
   }
-  result.onclick = () => {
-    const target = result.dataset.target
-    document.querySelector(target).click()
-  }
+  resultBtns.forEach(r => {
+    r.onclick = () => {
+      const target = r.dataset.target;
+      const selector = `[data-path="${target}"]`
+      document.querySelector(selector).click()
+    }
+  })
   reset.onclick = () => {
     questionsBox.classList.remove("hidden")
     resultBox.classList.add("hidden")
