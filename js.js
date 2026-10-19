@@ -351,14 +351,53 @@ if (questionnaire) {
     }
   }
   const stage3 = {}
+  const resultData = {
+    front: {
+      title: "برای نتیجه بهتر، از فرانت‌اند شروع کن.",
+      desc: "انتخاب‌های شما در خروجی و نوع کار، هر دو به این مسیر اشاره کردند.",
+      htmlTarget: "[data-path='frontend']",
+      label: "مشاهده نقشه راه فرانت اند",
+    },
+    back: {
+      title: "",
+      desc: "",
+      link: "",
+      label: "",
+    },
+    ai: {
+      title: "",
+      desc: "",
+      link: "",
+      label: "",
+    },
+    unkown: {
+      title: "",
+      desc: "",
+      link: "",
+      label: "",
+    }
+  }
 
-  const questions = questionnaire.querySelectorAll(".options button");
+  const questionsBox= questionnaire.querySelector(".options")
+  const questions = questionsBox.querySelectorAll("button");
   questions.forEach(Q => {
     Q.onclick = () => {
       Q.classList.toggle("selected");
     }
   })
 
+  const showResult = r => {
+    title.innerText = r.title;
+    desc.innerText = r.desc;
+    resultBox.classList.remove("hidden")
+    result.innerText = r.label;
+    result.dataset.target = r.htmlTarget;
+    next.classList.add("hidden")
+    questionsBox.classList.add("hidden")
+  }
+
+  const resultBox = questionnaire.querySelector(".resultBox");
+  const result = questionnaire.querySelector(".js-result");
   const title = questionnaire.querySelector(".title");
   const desc = questionnaire.querySelector(".desc");
   const next = questionnaire.querySelector(".next");
@@ -372,8 +411,16 @@ if (questionnaire) {
         Q.innerText = newText
       })
     }
+    if (currentStage === 2) {
+      showResult(resultData.front)
+      
+    }
 
     currentStage++;
+  }
+  result.onclick = () => {
+    const target = result.dataset.target
+    document.querySelector(target).click()
   }
   console.log(questions)
 }
