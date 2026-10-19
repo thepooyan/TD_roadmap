@@ -383,6 +383,7 @@ if (questionnaire) {
       }
     }
   };
+  const stageCount = Object.keys(stages).length
 
   const singleResultDesc = "انتخاب‌های شما در خروجی و نوع کار، هر دو به این مسیر اشاره کردند."
   const resultLabels = {
@@ -392,7 +393,8 @@ if (questionnaire) {
   }
 
   const resultBox = questionnaire.querySelector(".resultBox");
-  const result = questionnaire.querySelector(".js-result");
+  const currentStageEl = questionnaire.querySelector(".js-currentStage");
+  const stageCountEl = questionnaire.querySelector(".js-stageCount");
   const resultBtns = questionnaire.querySelectorAll(".js-resultBtn")
   const reset = questionnaire.querySelector(".js-reset");
   const title = questionnaire.querySelector(".title");
@@ -405,7 +407,7 @@ if (questionnaire) {
       Q.classList.toggle("selected");
     }
   })
-
+  stageCountEl.innerText = stageCount
   const showResult = (titleText, descText, winners) => {
     // title.innerText = `برای نتیجه بهتر، از ${r.label} شروع کن.`;
     title.innerText = titleText;
@@ -447,9 +449,16 @@ if (questionnaire) {
   }
 
   next.onclick = () => {
-    if (stages[currentStage + 1]) {
+    const nextStageNumber = currentStage + 1
+    if (stages[nextStageNumber]) {
       countVotes()
-      applyStage(stages[currentStage + 1])
+      applyStage(stages[nextStageNumber])
+      currentStage++;
+      currentStageEl.innerText = currentStage;
+      if (nextStageNumber === stageCount) {
+        //one to last stage
+        next.innerText = "نمایش نتیجه"
+      }
     } else {
       countVotes()
       const winners = findWinners()
@@ -475,8 +484,6 @@ if (questionnaire) {
         )
       }
     }
-
-    currentStage++;
   }
   resultBtns.forEach(r => {
     r.onclick = () => {
