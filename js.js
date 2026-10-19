@@ -340,17 +340,28 @@ const questionnaire = document.getElementById("roadmap_questionnaire");
 if (questionnaire) {
 
   let currentStage = 1;
-  const stage2 = {
-    title: "کدام کار را بیشتر دوست داری خودت امتحان کنی؟ ",
-    desc: "یک مورد را انتخاب کن؛ «نمی‌دانم» هم پاسخ معتبر است.",
-    questions: {
-      front: "پیدا کردن و اصلاح مشکل نمایش یا تعامل",
-      back: "پیدا کردن و اصلاح خطا در قوانین و اطلاعات",
-      ai: "بررسی نتیجه‌های ناموفق و بهتر کردن پاسخ یا مدل",
-      unkown: "هنوز نمی‌دانم؛ نمونه بیشتری لازم دارم",
-    }
+  const stages = {
+    1: {
+      title: "دوست داری کدام بخش را بیشتر بسازی یا تغییر بدهی؟",
+      desc: "می‌توانی بیش از یک مورد انتخاب کنی.",
+      questions: {
+        front: "ظاهر صفحه و تعامل کاربر",
+        back: "قوانین و جریان سفارش",
+        ai: "سامانه ای که از داده و اطلاعات استفاده میکند",
+        unkown: "هنوز تصویر روشنی ندارم",
+      }
+    },
+    2: {
+      title: "کدام کار را بیشتر دوست داری خودت امتحان کنی؟ ",
+      desc: "یک مورد را انتخاب کن؛ «نمی‌دانم» هم پاسخ معتبر است.",
+      questions: {
+        front: "پیدا کردن و اصلاح مشکل نمایش یا تعامل",
+        back: "پیدا کردن و اصلاح خطا در قوانین و اطلاعات",
+        ai: "بررسی نتیجه‌های ناموفق و بهتر کردن پاسخ یا مدل",
+        unkown: "هنوز نمی‌دانم؛ نمونه بیشتری لازم دارم",
+      }
+    },
   }
-  const stage3 = {}
   const resultData = {
     front: {
       title: "برای نتیجه بهتر، از فرانت‌اند شروع کن.",
@@ -378,7 +389,13 @@ if (questionnaire) {
     }
   }
 
-  const questionsBox= questionnaire.querySelector(".options")
+  const resultBox = questionnaire.querySelector(".resultBox");
+  const result = questionnaire.querySelector(".js-result");
+  const reset = questionnaire.querySelector(".js-reset");
+  const title = questionnaire.querySelector(".title");
+  const desc = questionnaire.querySelector(".desc");
+  const next = questionnaire.querySelector(".next");
+  const questionsBox = questionnaire.querySelector(".options")
   const questions = questionsBox.querySelectorAll("button");
   questions.forEach(Q => {
     Q.onclick = () => {
@@ -396,24 +413,22 @@ if (questionnaire) {
     questionsBox.classList.add("hidden")
   }
 
-  const resultBox = questionnaire.querySelector(".resultBox");
-  const result = questionnaire.querySelector(".js-result");
-  const title = questionnaire.querySelector(".title");
-  const desc = questionnaire.querySelector(".desc");
-  const next = questionnaire.querySelector(".next");
-  next.onclick = () => {
-    if (currentStage === 1) {
-      title.innerText = stage2.title;
-      desc.innerText = stage2.desc;
+  const applyStage = stage => {
+      title.innerText = stage.title;
+      desc.innerText = stage.desc;
       questions.forEach(Q => {
         Q.classList.remove("selected")
-        const newText = stage2.questions[Q.dataset.target]
+        const newText = stage.questions[Q.dataset.target]
         Q.innerText = newText
       })
+  }
+
+  next.onclick = () => {
+    if (currentStage === 1) {
+      applyStage(stages[2])
     }
     if (currentStage === 2) {
       showResult(resultData.front)
-      
     }
 
     currentStage++;
@@ -421,6 +436,13 @@ if (questionnaire) {
   result.onclick = () => {
     const target = result.dataset.target
     document.querySelector(target).click()
+  }
+  reset.onclick = () => {
+    questionsBox.classList.remove("hidden")
+    resultBox.classList.add("hidden")
+    next.classList.remove("hidden")
+    currentStage = 1;
+    applyStage(stages[1])
   }
   console.log(questions)
 }
