@@ -335,3 +335,40 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   });
 });
 
+//js for questionnaire
+const questionnaire = document.getElementById("roadmap_questionnaire");
+if (questionnaire) {
+
+  let currentStage = 1;
+  const stage2 = {
+    title: "کدام کار را بیشتر دوست داری خودت امتحان کنی؟ ",
+    desc: "یک مورد را انتخاب کن؛ «نمی‌دانم» هم پاسخ معتبر است.",
+    questions: [
+      {target: "front", content: "پیدا کردن و اصلاح مشکل نمایش یا تعامل"},
+      {target: "back", content: "پیدا کردن و اصلاح خطا در قوانین و اطلاعات"},
+      {target: "ai", content: "بررسی نتیجه‌های ناموفق و بهتر کردن پاسخ یا مدل"},
+      {target: "unkown", content: "هنوز نمی‌دانم؛ نمونه بیشتری لازم دارم"},
+    ]
+  }
+  const stage3 = {}
+
+  const questions = questionnaire.querySelectorAll(".options button");
+  questions.forEach(Q => {
+    Q.onclick = () => {
+      Q.classList.toggle("selected");
+    }
+  })
+
+  const title = questionnaire.querySelector(".title");
+  const desc = questionnaire.querySelector(".desc");
+  const next = questionnaire.querySelector(".next");
+  next.onclick = () => {
+    if (currentStage === 1) {
+      title.innerText = stage2.title;
+      desc.innerText = stage2.desc;
+    }
+
+    currentStage++;
+  }
+  console.log(questions)
+}
