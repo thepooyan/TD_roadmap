@@ -16,8 +16,84 @@
 
     .questionBox {
         --size: 30rem;
+        --bg: white;
         flex: var(--size) 0 0;
-        height: var(--size);
-        background-color: white;
+        background-color: var(--bg);
+        padding: 1rem;
+        border-radius: 10px;
+        border: 1px solid var(--color-gray-200);
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+
+        .head {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--color-gray-400);
+            font-weight: var(--weight_sm);
+        }
+
+        .title {
+            font-size: 21px;
+            color: var(--color-gray-700);
+            font-weight: var(--weight_lg);
+        }
+
+        .desc {
+            font-size: 11px;
+            color: var(--color-gray-400);
+            font-weight: var(--weight_sm);
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: .4rem;
+
+            button {
+                border: 1px solid var(--color-gray-200);
+                padding: 11px 14px;
+                border-radius: 6px;
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                background: transparent;
+
+                &.selected {
+                    border-color: var(--color-gray-600);
+                    background: var(--color-indigo-100);
+                    &::before {
+                        background: var(--color-gray-600);
+                        box-shadow: inset 0 0 0 3px var(--bg);
+                    }
+                }
+                &::before {
+                    content: "";
+                    border: 1px solid var(--color-gray-400);
+                    border-radius: 50%;
+                    width: 13px;
+                    height: 13px;
+                    flex-shrink: 0;                
+                }
+            }
+        }
+
+        .next {
+            padding: 13px 23px;
+            border-radius: 7px;
+            font-size: 14px;
+            background: var(--color-gray-600);
+            color: #fff;
+            width: max-content;        
+            transition: all .2s;
+
+            &:hover {
+                translate: 0 -2px;
+                background: var(--color-gray-700);
+
+            } 
+        }
     }
 }
