@@ -345,37 +345,28 @@ if (questionnaire) {
       title: "دوست داری کدام بخش را بیشتر بسازی یا تغییر بدهی؟",
       desc: "می‌توانی بیش از یک مورد انتخاب کنی.",
       questions: {
-        front: "ظاهر صفحه و تعامل کاربر",
-        back: "قوانین و جریان سفارش",
+        frontend: "ظاهر صفحه و تعامل کاربر",
+        backend: "قوانین و جریان سفارش",
         ai: "سامانه ای که از داده و اطلاعات استفاده میکند",
-        unkown: "هنوز تصویر روشنی ندارم",
+        unknown: "هنوز تصویر روشنی ندارم",
       }
     },
     2: {
       title: "کدام کار را بیشتر دوست داری خودت امتحان کنی؟ ",
       desc: "یک مورد را انتخاب کن؛ «نمی‌دانم» هم پاسخ معتبر است.",
       questions: {
-        front: "پیدا کردن و اصلاح مشکل نمایش یا تعامل",
-        back: "پیدا کردن و اصلاح خطا در قوانین و اطلاعات",
+        frontend: "پیدا کردن و اصلاح مشکل نمایش یا تعامل",
+        backend: "پیدا کردن و اصلاح خطا در قوانین و اطلاعات",
         ai: "بررسی نتیجه‌های ناموفق و بهتر کردن پاسخ یا مدل",
-        unkown: "هنوز نمی‌دانم؛ نمونه بیشتری لازم دارم",
+        unknown: "هنوز نمی‌دانم؛ نمونه بیشتری لازم دارم",
       }
     },
   }
-  const resultDesc = "انتخاب‌های شما در خروجی و نوع کار، هر دو به این مسیر اشاره کردند."
-  const resultData = {
-    front: {
-      htmlTarget: "[data-path='frontend']",
-      label: "فرانت اند",
-    },
-    back: {
-      htmlTarget: "[data-path='backend']",
-      label: "بک اند",
-    },
-    ai: {
-      htmlTarget: "[data-path='ai']",
-      label: "هوش مصنوعی",
-    }
+  const singleResultDesc = "انتخاب‌های شما در خروجی و نوع کار، هر دو به این مسیر اشاره کردند."
+  const resultLabels = {
+    frontend: "فرانت اند",
+    backend: "بک اند",
+    ai: "هوش مصنوعی",
   }
 
   const resultBox = questionnaire.querySelector(".resultBox");
@@ -392,16 +383,14 @@ if (questionnaire) {
     }
   })
 
-  const showResult = r => {
-    title.innerText = `برای نتیجه بهتر، از ${r.label} شروع کن.`;
-    desc.innerText = resultDesc;
+  const showResult = (titleText, descText, winners) => {
+    // title.innerText = `برای نتیجه بهتر، از ${r.label} شروع کن.`;
+    title.innerText = titleText;
+    desc.innerText = descText;
     resultBox.classList.remove("hidden")
-    result.innerText = `نقشه راه ${r.label}`;
-    result.dataset.target = r.htmlTarget;
     next.classList.add("hidden")
     questionsBox.classList.add("hidden")
   }
-
   const applyStage = stage => {
       title.innerText = stage.title;
       desc.innerText = stage.desc;
@@ -412,8 +401,8 @@ if (questionnaire) {
       })
   }
   const votes = {
-    front: 0,
-    back: 0,
+    frontend: 0,
+    backend: 0,
     ai: 0,
   }
   const countVotes = () => {
@@ -443,10 +432,26 @@ if (questionnaire) {
       countVotes()
       const winners = findWinners()
       if (winners.length === 0) {
-        showResult(resultData.)
+        showResult(
+          "اطلاعات کافی برای پیشنهاد یک مسیر نداریم.",
+          "می‌توانی نمونه‌ها را دوباره امتحان کنی یا نقشه‌ها را بدون پیشنهاد بررسی کنی.",
+          []
+        )
       }
-      if (winners.length === 1)
-        showResult(resultData[winners[0]])
+      if (winners.length === 1) {
+        showResult(
+          `برای نتیجه بهتر، از ${resultLabels[winners[0]]} شروع کن.`,
+          singleResultDesc,
+          winners
+        )
+      }
+      if (winners.length > 1) {
+        showResult(
+          "دو یا چند گزینه برای بررسی داری.",
+          "انتخاب‌هایت به چند مسیر مختلف اشاره دارند. می‌توانی نقشه هر کدام را ببینی و بعد تصمیم بگیری.",
+          winners
+        )
+      }
     }
 
     currentStage++;

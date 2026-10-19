@@ -630,21 +630,25 @@
           می‌توانی بیش از یک مورد انتخاب کنی.
         </p>
         <div class="resultBox hidden">
-          <p class="js-result button secondary"></p>
+          <p class="js-result flex">
+            <button class="button secondary" data-target="frontend">نقشه راه فرانت اند</button>
+            <button class="button secondary" data-target="backend">نقشه راه بک اند</button>
+            <button class="button secondary" data-target="ai">نقشه راه هوش مصنوعی</button>
+          </p>
           <p class="font-span">این نتیجه درباره استعداد، شخصیت یا آینده شغلی تو قضاوت نمی‌کند.</p>
           <button class="button underline js-reset">تغییر پاسخ ها</button>
         </div>
         <div class="options">
-          <button data-target="front">
+          <button data-target="frontend">
             صفحه و تعامل کاربر
           </button>
-          <button data-target="back">
+          <button data-target="backend">
             قوانین و جریان سفارش
           </button>
           <button data-target="ai">
             سامانه‌ای که از داده و اطلاعات استفاده می‌کند
           </button>
-          <button data-target="unkown">
+          <button data-target="unknown">
             هنوز تصویر روشنی ندارم
           </button>
         </div>
