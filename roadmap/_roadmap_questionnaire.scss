@@ -47,15 +47,16 @@
             font-weight: var(--weight_sm);
         }
 
+        .hidden {
+            display: none !important;
+        }
+
         .resultBox {
             display: flex;
             flex-direction: column;
             gap: 2rem;
             padding-top: 1rem;
             
-            &.hidden {
-                display: none;
-            }
 
             button {
                 align-self: flex-start;

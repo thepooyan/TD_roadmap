@@ -409,12 +409,18 @@ if (questionnaire) {
   })
   stageCountEl.innerText = stageCount
   const showResult = (titleText, descText, winners) => {
-    // title.innerText = `برای نتیجه بهتر، از ${r.label} شروع کن.`;
     title.innerText = titleText;
     desc.innerText = descText;
     resultBox.classList.remove("hidden")
     next.classList.add("hidden")
     questionsBox.classList.add("hidden")
+    resultBtns.forEach(r => {
+      if (winners.includes(r.dataset.target)) {
+        r.classList.remove("hidden")
+      } else {
+        r.classList.add("hidden")
+      }
+    })
   }
   const applyStage = stage => {
       title.innerText = stage.title;
@@ -438,7 +444,6 @@ if (questionnaire) {
       }
     })
   }
-
   const findWinners = () => {
     const maxVotes = Math.max(...Object.values(votes));
     if (maxVotes === 0) return []
@@ -447,7 +452,6 @@ if (questionnaire) {
     );
     return winners
   }
-
   next.onclick = () => {
     const nextStageNumber = currentStage + 1
     if (stages[nextStageNumber]) {
@@ -466,7 +470,7 @@ if (questionnaire) {
         showResult(
           "اطلاعات کافی برای پیشنهاد یک مسیر نداریم.",
           "می‌توانی نمونه‌ها را دوباره امتحان کنی یا نقشه‌ها را بدون پیشنهاد بررسی کنی.",
-          []
+          ["ai", "frontend", "backend"]
         )
       }
       if (winners.length === 1) {
