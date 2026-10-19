@@ -132,6 +132,14 @@
       border-color: #b5ecd0;
     }
   }
+
+  &:not(:last-child)::before {
+    content: "⌄";
+    position: absolute;
+    right: 1.685rem;
+    top: 52px;
+    color: color-mix(in srgb, var(--accent), transparent 30%);
+  }
 }
 
 .step-num {
