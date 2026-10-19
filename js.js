@@ -343,12 +343,12 @@ if (questionnaire) {
   const stage2 = {
     title: "کدام کار را بیشتر دوست داری خودت امتحان کنی؟ ",
     desc: "یک مورد را انتخاب کن؛ «نمی‌دانم» هم پاسخ معتبر است.",
-    questions: [
-      {target: "front", content: "پیدا کردن و اصلاح مشکل نمایش یا تعامل"},
-      {target: "back", content: "پیدا کردن و اصلاح خطا در قوانین و اطلاعات"},
-      {target: "ai", content: "بررسی نتیجه‌های ناموفق و بهتر کردن پاسخ یا مدل"},
-      {target: "unkown", content: "هنوز نمی‌دانم؛ نمونه بیشتری لازم دارم"},
-    ]
+    questions: {
+      front: "پیدا کردن و اصلاح مشکل نمایش یا تعامل",
+      back: "پیدا کردن و اصلاح خطا در قوانین و اطلاعات",
+      ai: "بررسی نتیجه‌های ناموفق و بهتر کردن پاسخ یا مدل",
+      unkown: "هنوز نمی‌دانم؛ نمونه بیشتری لازم دارم",
+    }
   }
   const stage3 = {}
 
@@ -366,6 +366,11 @@ if (questionnaire) {
     if (currentStage === 1) {
       title.innerText = stage2.title;
       desc.innerText = stage2.desc;
+      questions.forEach(Q => {
+        Q.classList.remove("selected")
+        const newText = stage2.questions[Q.dataset.target]
+        Q.innerText = newText
+      })
     }
 
     currentStage++;
