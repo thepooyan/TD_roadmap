@@ -405,7 +405,7 @@ if (questionnaire) {
   questions.forEach(Q => {
     Q.onclick = () => {
       Q.classList.toggle("selected");
-      next.disabled = false;
+      checkToDisabledNext()
     }
   })
   stageCountEl.innerText = stageCount
@@ -422,6 +422,11 @@ if (questionnaire) {
         r.classList.add("hidden")
       }
     })
+  }
+  const checkToDisabledNext = () => {
+    let someSelected = Array.from(questions).some(s => s.classList.contains("selected"));
+    if (!someSelected) next.disabled = true;
+    else next.disabled = false
   }
   const applyStage = stage => {
       title.innerText = stage.title;
