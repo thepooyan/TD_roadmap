@@ -443,8 +443,7 @@ if (questionnaire) {
       countVotes()
       const winners = findWinners()
       if (winners.length === 0) {
-        alert("none")
-        return
+        showResult(resultData.)
       }
       if (winners.length === 1)
         showResult(resultData[winners[0]])

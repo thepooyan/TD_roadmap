@@ -31,6 +31,10 @@
         --bg-hover: #f0f0f0;
         box-shadow: none;
     }
+    &.secondary {
+        --bg: var(--color-gray-500);
+        --bg-hover: var(--color-gray-600);
+    }
     &.underline {
         --color: inherit;
         --bg: transparent;
