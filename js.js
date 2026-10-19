@@ -411,13 +411,43 @@ if (questionnaire) {
         Q.innerText = newText
       })
   }
+  const votes = {
+    front: 0,
+    back: 0,
+    ai: 0,
+  }
+  const countVotes = () => {
+    questions.forEach(q => {
+      const target = q.dataset.target;
+      if (q.classList.contains("selected") && target !== "unknown") {
+        votes[q.dataset.target]++
+      }
+    })
+  }
+
+  const findWinners = () => {
+    const maxVotes = Math.max(...Object.values(votes));
+    if (maxVotes === 0) return []
+    const winners = Object.keys(votes).filter(
+      key => votes[key] === maxVotes
+    );
+    return winners
+  }
 
   next.onclick = () => {
     if (currentStage === 1) {
+      countVotes()
       applyStage(stages[2])
     }
     if (currentStage === 2) {
-      showResult(resultData.ai)
+      countVotes()
+      const winners = findWinners()
+      if (winners.length === 0) {
+        alert("none")
+        return
+      }
+      if (winners.length === 1)
+        showResult(resultData[winners[0]])
     }
 
     currentStage++;
