@@ -390,6 +390,29 @@ if (questionnaire) {
     frontend: "فرانت اند",
     backend: "بک اند",
     ai: "هوش مصنوعی",
+  } 
+  const logicCourse = {
+    title: "منطق و مقدمات برنامه نویسی",
+    desc: "اولین دوره در مسیر آموزش فرانت‌اند و بک‌اند",
+    link: "https://tahlildadeh.com/coursedetails/123/%d8%a2%d9%85%d9%88%d8%b2%d8%b4-%d9%85%d9%86%d8%b7%d9%82-%d9%88-%d9%85%d9%82%d8%af%d9%85%d8%a7%d8%aa-%d8%a8%d8%b1%d9%86%d8%a7%d9%85%d9%87-%d9%86%d9%88%db%8c%d8%b3%db%8c.aspx"
+  };
+
+  const firstStep = {
+    frontend: {
+      title: logicCourse.title,
+      desc: logicCourse.desc,
+      link: logicCourse.link
+    },
+    backend: {
+      title: logicCourse.title,
+      desc: logicCourse.desc,
+      link: logicCourse.link
+    },
+    ai: {
+      title: "پایتون جامع",
+      desc: "اولین دوره در مسیر آموزشی هوش مصنوعی",
+      link: "https://tahlildadeh.com/coursedetails/1165/%d8%af%d9%88%d8%b1%d9%87-%d8%a2%d9%85%d9%88%d8%b2%d8%b4%db%8c-%d9%be%d8%a7%db%8c%d8%aa%d9%88%d9%86.aspx"
+    },
   }
 
   const resultBox = questionnaire.querySelector(".resultBox");
@@ -402,6 +425,12 @@ if (questionnaire) {
   const next = questionnaire.querySelector(".next");
   const questionsBox = questionnaire.querySelector(".options")
   const questions = questionsBox.querySelectorAll("button");
+
+  const consultSection = document.getElementById("roadmap_consult")
+  const consult_title = consultSection.querySelector(".js-title");
+  const consult_link = consultSection.querySelector(".js-link");
+  const consult_desc = consultSection.querySelector(".js-desc");
+
   questions.forEach(Q => {
     Q.onclick = () => {
       Q.classList.toggle("selected");
@@ -486,6 +515,9 @@ if (questionnaire) {
           singleResultDesc,
           winners
         )
+        consult_title.innerText = firstStep[winners[0]].title
+        consult_desc.innerText = firstStep[winners[0]].desc
+        consult_link.setAttribute("href", firstStep[winners[0]].link)
       }
       if (winners.length > 1) {
         showResult(
