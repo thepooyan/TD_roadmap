@@ -29,18 +29,40 @@
             padding: 10px 0;
             margin-bottom: 12px;
         }
-        .telegram, .bale {
-            --size: 3rem;
-            width: var(--size);
-            height: var(--size);
-            padding: 10px;
-            border-radius: 100%;
-        }
-        .telegram {
-            background-color: var(--telegram);
-        }
-        .bale {
-            background-color: var(--bale);
+        .socials {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+
+            .social {
+                --size: 2.3rem;
+                padding: 5px;
+                border-radius: 100%;
+                display: inline-flex;
+                overflow: hidden;
+                filter: grayscale(1);
+                transition: filter 1s;
+
+                &:hover {
+                    filter: grayscale(0);
+                }
+
+                > svg, > img {
+                    width: var(--size);
+                    height: var(--size);
+                }
+
+                &.telegram {
+                    > svg {
+                        padding: 3px;
+                    }
+                    background-color: var(--telegram);
+                }
+                &.bale {
+                    background-color: var(--bale);
+                }
+            }
+
         }
     }
 }
