@@ -429,7 +429,8 @@ if (questionnaire) {
 
   questions.forEach(Q => {
     Q.onclick = () => {
-      Q.classList.toggle("selected");
+      questions.forEach(q => q.classList.remove("selected"))
+      Q.classList.add("selected");
       checkToDisabledNext()
     }
   })
