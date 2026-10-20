@@ -416,19 +416,19 @@ if (questionnaire) {
   } 
   const logicCourse = {
     title: "منطق و مقدمات برنامه نویسی",
-    desc: "اولین دوره در مسیر آموزش فرانت‌اند و بک‌اند",
+    desc: "",
     link: "https://tahlildadeh.com/coursedetails/123/%d8%a2%d9%85%d9%88%d8%b2%d8%b4-%d9%85%d9%86%d8%b7%d9%82-%d9%88-%d9%85%d9%82%d8%af%d9%85%d8%a7%d8%aa-%d8%a8%d8%b1%d9%86%d8%a7%d9%85%d9%87-%d9%86%d9%88%db%8c%d8%b3%db%8c.aspx"
   };
 
   const firstStep = {
     frontend: {
       title: logicCourse.title,
-      desc: logicCourse.desc,
+      desc: "اولین دوره در مسیر آموزش فرانت‌اند",
       link: logicCourse.link
     },
     backend: {
       title: logicCourse.title,
-      desc: logicCourse.desc,
+      desc: "اولین دوره در مسیر آموزش بک‌اند",
       link: logicCourse.link
     },
     ai: {
