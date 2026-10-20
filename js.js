@@ -379,6 +379,33 @@ if (questionnaire) {
       }
     }
   };
+  const tieBreakers = {
+    font_back: {
+      title: "وقتی با یک برنامه که درست کار نمی‌کند روبه‌رو می‌شوی، ترجیح می‌دهی چه چیزی را بررسی کنی؟",
+      desc: "فرض کن دانش لازم برای انجام هر دو کار را داری.",
+      questions: {
+        frontend: "بررسی کنم چرا کاربر نمی‌تواند به‌راحتی با صفحه کار کند یا نتیجه موردنظرش را ببیند",
+        backend: "بررسی کنم اطلاعات در کدام مرحله اشتباه پردازش شده و چرا برنامه نتیجه درستی نمی‌دهد",
+      }
+    },
+    font_ai: {
+      title: "وقتی با یک مسئله جدید روبه‌رو می‌شوی، کدام روش برایت جذاب‌تر است؟",
+      desc: "روشی را انتخاب کن که بیشتر دوست داری امتحان کنی.",
+      questions: {
+        frontend: "چند نمونه قابل مشاهده بسازم و با امتحان کردن آن‌ها به بهترین راه‌حل برسم",
+        ai: "نمونه‌ها و داده‌های مختلف را بررسی کنم تا الگوهای پنهان و راه‌حل مناسب را پیدا کنم",
+      }
+    },
+    back_ai: {
+      title: "برای حل یک مسئله پیچیده، کدام روش را بیشتر می‌پسندی؟",
+      desc: "فرض کن هر دو روش می‌توانند به نتیجه خوبی برسند.",
+      questions: {
+        backend: "قوانین و مراحل حل مسئله را مشخص کنم تا سیستم دقیقاً طبق آن‌ها عمل کند",
+        ai: "از مثال‌ها و داده‌ها استفاده کنم تا سیستم الگوها را یاد بگیرد و برای موارد جدید نتیجه بدهد",
+      }
+    },
+  };
+  
   const stageCount = Object.keys(stages).length
 
   const singleResultDesc = "انتخاب‌های شما در خروجی و نوع کار، هر دو به این مسیر اشاره کردند."
@@ -460,7 +487,9 @@ if (questionnaire) {
       questions.forEach(Q => {
         Q.classList.remove("selected")
         const newText = stage.questions[Q.dataset.target]
-        Q.innerText = newText
+        if (newText)
+          Q.innerText = newText
+        else Q.classList.add("hidden")
       })
       next.disabled = true
   }
@@ -491,20 +520,12 @@ if (questionnaire) {
       applyStage(stages[nextStageNumber])
       currentStage++;
       currentStageEl.innerText = currentStage;
-      if (nextStageNumber === stageCount) {
-        //one to last stage
+      if (nextStageNumber === stageCount) { //one to last stage
         next.innerText = "نمایش نتیجه"
       }
     } else {
       countVotes()
       const winners = findWinners()
-      if (winners.length === 0) {
-        showResult(
-          "اطلاعات کافی برای پیشنهاد یک مسیر نداریم.",
-          "می‌توانی نمونه‌ها را دوباره امتحان کنی یا نقشه‌ها را بدون پیشنهاد بررسی کنی.",
-          ["ai", "frontend", "backend"]
-        )
-      }
       if (winners.length === 1) {
         showResult(
           `برای نتیجه بهتر، از ${resultLabels[winners[0]]} شروع کن.`,
@@ -515,12 +536,15 @@ if (questionnaire) {
         consult_desc.innerText = firstStep[winners[0]].desc
         consult_link.setAttribute("href", firstStep[winners[0]].link)
       }
-      if (winners.length > 1) {
-        showResult(
-          "دو یا چند گزینه برای بررسی داری.",
-          "انتخاب‌هایت به چند مسیر مختلف اشاره دارند. می‌توانی نقشه هر کدام را ببینی و بعد تصمیم بگیری.",
-          winners
-        )
+      if (winners.length > 1) { // two options tied
+        const tieBreakerStage = (() => {
+          if (winners.includes("frontend")) {
+            if (winners.includes("backend")) return tieBreakers.font_back
+            else return tieBreakers.font_ai
+          } else return tieBreakers.back_ai
+        })();
+        applyStage(tieBreakerStage)
+        next.innerText = "نمایش نتیجه"
       }
     }
   }
@@ -533,6 +557,7 @@ if (questionnaire) {
   })
   reset.onclick = () => {
     questionsBox.classList.remove("hidden")
+    questions.forEach(q => q.classList.remove("hidden"))
     resultBox.classList.add("hidden")
     next.classList.remove("hidden")
     currentStage = 1;
