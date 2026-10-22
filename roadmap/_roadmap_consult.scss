@@ -81,7 +81,4 @@
             border: none;
         }
     }
-    @include v.media(v.$mobile) {
-        background-color: red;
-    }
 }
