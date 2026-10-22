@@ -167,7 +167,8 @@ if (shell.root) {
     skills: shell.root.querySelector("#detail-skills"),
     step: shell.root.querySelector("#detail-step"),
     stepCount: shell.root.querySelector("#detail-stepCount"),
-    nextBtn: shell.root.querySelector("#nextStage")
+    nextBtn: shell.root.querySelector("#nextStage"),
+    prevBtn: shell.root.querySelector("#prevStage")
   };
 
   const numberToPersian = (number) => {
@@ -265,6 +266,13 @@ if (shell.root) {
     const next = selected.nextElementSibling
     if (next) {
       next.click()
+    }
+  })
+  shell.details.prevBtn.addEventListener("click", () => {
+    const selected = shell.steps.querySelector(".selected")
+    const prev = selected.previousElementSibling
+    if (prev) {
+      prev.click()
     }
   })
 
