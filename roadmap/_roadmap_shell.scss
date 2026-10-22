@@ -419,17 +419,39 @@
     }
 
     .step {
-      width: max-content;
+      justify-content: space-between;
+      width: 100%;
       min-width: unset;
       border: unset;
       background-color: unset;
       padding: 0;
+      gap: 0;
 
+      &:has(~ .selected) {
+        .step-num {
+          border: 2px solid var(--accent);
+          color: var(--accent);
+        }
+        &::before {
+          content: "⌄";
+        }
+      }
+      .step-num {
+        order: 1;
+      }
       .step-text {
         display: none;
       }
       &::before {
+        order: 2;
+        position: static;
+        rotate: 90deg;
+        margin: auto;
+        font-weight: bold;
         content: unset;
+      }
+      &:last-child {
+        width: max-content;
       }
     }
   }
