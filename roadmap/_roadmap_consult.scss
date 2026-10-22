@@ -71,7 +71,15 @@
     }
 
     @include v.media(v.$tablet) {
-        background-color: yellow;
+        flex-direction: column;
+
+        .right .button {
+            align-self: center;
+        }
+        .left {
+            padding-right: 0;
+            border: none;
+        }
     }
     @include v.media(v.$mobile) {
         background-color: red;

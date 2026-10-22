@@ -1,3 +1,5 @@
+@use "../Content/source/Variables" as v;
+
 .path-card {
     border: 1px solid #e1e8f3;
     background: #fff;
@@ -45,5 +47,9 @@
         background: var(--cardSoft);
         border-radius: 13px;
         padding: 0.4rem;
+    }
+
+    @include v.media(v.$tablet) {
+
     }
 }

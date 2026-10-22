@@ -80,7 +80,15 @@
         flex-direction: column;
     }
     @include v.media(v.$tablet) {
-        background-color: yellow;
+        margin-top: 0;
+        .graphics {
+            width: 28rem;
+            .floating.note-ai {
+                top: 60px;
+                left : 116px;
+                transform: rotate(4deg);
+            }
+        }
     }
     @include v.media(v.$mobile) {
         background-color: red;

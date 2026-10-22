@@ -128,9 +128,6 @@
         flex-direction: column;
         gap: 2rem;
     }
-    @include v.media(v.$tablet) {
-        background-color: yellow;
-    }
     @include v.media(v.$mobile) {
         background-color: red;
     }
