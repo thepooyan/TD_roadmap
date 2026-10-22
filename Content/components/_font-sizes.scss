@@ -1,9 +1,10 @@
+@use "../source/Variables" as v;
+
 html {
   font-size: 16px;
 }
 :root {
-
-    --font-scale: 1;
+  --font-scale: 1;
   --text-xs: 0.75rem;
   --text-xs--line-height: calc(1 / 0.75);
 
@@ -85,6 +86,10 @@ html {
     line-height: var(--text-hero--line-height);
     font-weight: var(--text-hero-weight);
     color: var(--color-gray-700);
+
+    @include v.media(v.$mobile) {
+      font-size: var(--text-5xl);
+    }
   }
   .font-title {
     font-size: var(--text-title);

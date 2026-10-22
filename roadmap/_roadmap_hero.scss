@@ -91,6 +91,22 @@
         }
     }
     @include v.media(v.$mobile) {
-        background-color: red;
+        .cta {
+            display: flex;
+            align-items: stretch;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .graphics {
+            width: 300px;
+
+            .floating {
+                padding: 6px;
+            }
+
+            .font-span {
+                font-size: var(--text-xs);
+            }
+        }
     }
 }

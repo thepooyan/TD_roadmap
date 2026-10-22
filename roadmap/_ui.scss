@@ -51,8 +51,12 @@
     max-width: 70rem;
     margin-inline: auto;
     margin-block: 8rem;
+    padding: 0;
 
     @include v.media(v.$tablet) {
         margin-block: 4rem;
+    }
+    @include v.media(v.$mobile) {
+        padding: 5px;
     }
 }
