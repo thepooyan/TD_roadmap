@@ -1,3 +1,5 @@
+@use "../Content/source/Variables" as v;
+
 #roadmap_questionnaire {
     display: flex;
     justify-content: center;
@@ -120,5 +122,16 @@
                 opacity: .5;
             }
         }
+    }
+
+   @include v.media(v.$laptop) {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    @include v.media(v.$tablet) {
+        background-color: yellow;
+    }
+    @include v.media(v.$mobile) {
+        background-color: red;
     }
 }

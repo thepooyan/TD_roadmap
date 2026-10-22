@@ -1,8 +1,10 @@
+@use "../Content/source/Variables" as v;
+
 #roadmap_hero {
     display: grid;
     grid-template-columns: repeat(2, auto);
     align-items: center;
-    gap: 5rem;
+    gap: 2rem;
     margin-top: 10rem;
 
     .text {
@@ -71,5 +73,16 @@
                 transform: rotate(5deg);
             }
         }
+    }
+
+    @include v.media(v.$laptop) {
+        display: flex;
+        flex-direction: column;
+    }
+    @include v.media(v.$tablet) {
+        background-color: yellow;
+    }
+    @include v.media(v.$mobile) {
+        background-color: red;
     }
 }
