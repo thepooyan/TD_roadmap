@@ -1,55 +1,87 @@
 @use "../Content/source/Variables" as v;
 
-.path-card {
-    border: 1px solid #e1e8f3;
-    background: #fff;
-    border-radius: 18px;
-    min-height: 233px;
-    border: 2px solid transparent;
-    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 16px rgba(20, 48, 92, 0.0156862745);
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
+#roadmap_paths {
+    
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: .9rem;
+        margin-bottom: .9rem;
 
-    --cardSoft: color-mix(in srgb, var(--cardColor), white 80%);
+        .path-card {
+            border: 1px solid #e1e8f3;
+            background: #fff;
+            border-radius: 18px;
+            min-height: 233px;
+            border: 2px solid transparent;
+            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 16px rgba(20, 48, 92, 0.0156862745);
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
 
-    &[data-path="frontend"] {
-        --cardColor: var(--color-front);
-    }
-    &[data-path="backend"] {
-        --cardColor: var(--color-back);
-    }
-    &[data-path="ai"] {
-        --cardColor: var(--color-ai);
-    }
+            --cardSoft: color-mix(in srgb, var(--cardColor), white 80%);
+
+            &[data-path="frontend"] {
+                --cardColor: var(--color-front);
+            }
+            &[data-path="backend"] {
+                --cardColor: var(--color-back);
+            }
+            &[data-path="ai"] {
+                --cardColor: var(--color-ai);
+            }
 
 
 
-    &:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow)
-    }
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: var(--shadow)
+            }
 
-    &[aria-pressed="true"] {
-      border: 2px solid var(--cardColor);
-      box-shadow: 0 11px 32px #14305c0d
-    }
+            &[aria-pressed="true"] {
+            border: 2px solid var(--cardColor);
+            box-shadow: 0 11px 32px #14305c0d
+            }
 
-    i,svg {
-        width: 46px;
-        height: 46px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: var(--cardSoft);
-        border-radius: 13px;
-        padding: 0.4rem;
+            i,svg {
+                width: 46px;
+                height: 46px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: var(--cardSoft);
+                border-radius: 13px;
+                padding: 0.4rem;
+            }
+
+        }
     }
 
     @include v.media(v.$tablet) {
+        .cards {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
 
+            .path-card {
+                padding: .7rem;
+                min-height: unset;
+                flex-direction: row;
+                justify-content: flex-start;
+
+                p {
+                    text-align: right;
+                }
+                .font-subtitle {
+                    font-size: var(--text-sm);
+                }
+                small {
+                    font-size: var(--text-xs);
+                }
+            }
+        }
     }
 }
