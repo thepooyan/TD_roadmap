@@ -20,7 +20,7 @@
                 &::before {
                     content: "";
                     position: absolute;
-                    bottom: 9px;
+                    bottom: 2px;
                     right: 0;
                     width: 100%;
                     height: 9px;
@@ -91,6 +91,12 @@
         }
     }
     @include v.media(v.$mobile) {
+        .text {
+            text-align: center;
+        }
+        .font-hero {
+            line-height: 1.1;
+        }
         .cta {
             display: flex;
             align-items: stretch;
@@ -102,6 +108,23 @@
 
             .floating {
                 padding: 6px;
+
+                &.note-ai {
+                    top: 70px;
+                    left : 90px;
+                    transform: rotate(8deg);
+                }
+                &.note-front {
+                    left: 0;
+                    top: unset;
+                    bottom: 80px;
+                    rotate: 9deg;
+                }
+                &.note-back {
+                    top: unset;
+                    bottom: 80px;
+                    rotate: -9deg;
+                }
             }
 
             .font-span {
