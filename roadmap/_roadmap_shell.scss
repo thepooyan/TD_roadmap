@@ -406,14 +406,36 @@
 
   .steps {
     display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 5px 2px 15px;
-    gap: 7px;
+    justify-content: space-between;
 
-    &::before {
-      display: none;
+    &::before { // the line
+      height: 2px;
+      width: 100%;
+      right: 0;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
     }
+
+    .step {
+      width: max-content;
+      min-width: unset;
+      border: unset;
+      background-color: unset;
+      padding: 0;
+
+      .step-text {
+        display: none;
+      }
+      &::before {
+        content: unset;
+      }
+    }
+  }
+  .detail-pane .detail-actions > div {
+    display: flex;
+    justify-content: space-between;
   }
 
   .step {
