@@ -80,5 +80,13 @@
             padding-right: 0;
             border: none;
         }
+
+        .socials {
+            justify-content: center;
+
+            .social {
+                filter: unset !important;
+            }
+        }
     }
 }
