@@ -456,8 +456,10 @@ if (questionnaire) {
   const next = questionnaire.querySelector(".next");
   const questionsBox = questionnaire.querySelector(".options")
   const questions = questionsBox.querySelectorAll("button");
+
   const form = questionnaire.querySelector(".js-form");
-  const formErrors = questionnaire.querySelector(".js-formErrors");
+  const formErrorsEl = questionnaire.querySelector(".js-formErrors");
+  const formInputs = questionnaire.querySelectorAll(".js-form input");
 
   const consultSection = document.getElementById("roadmap_consult")
   const consult_title = consultSection.querySelector(".js-title");
@@ -486,6 +488,47 @@ if (questionnaire) {
       }
     })
   }
+
+  const submitForm = async () => {
+    const formId = 13;
+
+    const payload = {
+      FormId: formId,
+      SubmittedAt: new Date().toISOString(),
+      FormFieldValues: [
+        {
+          FormFieldId: 33, // name
+          FieldValue: "John"
+        },
+        {
+          FormFieldId: 34, // last name
+          FieldValue: "Ahmadi"
+        },
+        {
+          FormFieldId: 789, // number
+          FieldValue: "09026655632"
+        },
+      ]
+    };
+
+    const token = document.querySelector(
+      'input[name="__RequestVerificationToken"]'
+    )?.value;
+    if (!token) throw new Error("Verification token for roadmap consult form is not given.")
+
+    const response = await fetch("/Form/save", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+        "RequestVerificationToken": token
+      },
+      body: JSON.stringify(payload)
+    });
+
+    console.log(response.status);
+    console.log(await response.text());
+  }
   const showForm = () => {
     title.innerText = "مرحله نهایی";
     desc.innerText = "لطفا جهت نمایش نتیجه، اطلاعات خود را وارد کنید";
@@ -493,6 +536,37 @@ if (questionnaire) {
     form.classList.remove("hidden")
     questionsBox.classList.add("hidden")
   }
+  const getFormErrors = () => {
+    const errors = []
+    const mobileInput = form.querySelector('input[name="mobile_number"]')?.value || "";
+    const inputsArray = Array.from(formInputs)
+
+    const anyEmpty = inputsArray.some(i => !i.value)
+    const validMobile = (mobileInput.length === 11) && (mobileInput.startsWith("09"))
+
+    if (!validMobile)
+      errors.push("شماره همراه وارد شده صحیح نمیباشد")
+    if (anyEmpty)
+      errors.push("لطفا همه موارد را کامل کنید")
+
+    return errors
+  }
+  const handleInput = () => {
+    const errors = getFormErrors()
+
+    if (errors.length === 0) { // no error
+      next.disabled = false
+      formErrorsEl.innerText = ""
+      formErrorsEl.classList.remove("show")
+    } else { // has error
+      next.disabled = true
+      formErrorsEl.classList.add("show")
+      formErrorsEl.innerText = errors.at(-1)
+    }
+
+  }
+  formInputs.forEach(input => input.oninput = handleInput)
+
   const checkToDisabledNext = () => {
     let someSelected = Array.from(questions).some(s => s.classList.contains("selected"));
     if (!someSelected) next.disabled = true;
