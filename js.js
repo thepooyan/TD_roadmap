@@ -456,6 +456,8 @@ if (questionnaire) {
   const next = questionnaire.querySelector(".next");
   const questionsBox = questionnaire.querySelector(".options")
   const questions = questionsBox.querySelectorAll("button");
+  const form = questionnaire.querySelector(".js-form");
+  const formErrors = questionnaire.querySelector(".js-formErrors");
 
   const consultSection = document.getElementById("roadmap_consult")
   const consult_title = consultSection.querySelector(".js-title");
@@ -483,6 +485,13 @@ if (questionnaire) {
         r.classList.add("hidden")
       }
     })
+  }
+  const showForm = () => {
+    title.innerText = "مرحله نهایی";
+    desc.innerText = "لطفا جهت نمایش نتیجه، اطلاعات خود را وارد کنید";
+    next.innerText = "ثبت"
+    form.classList.remove("hidden")
+    questionsBox.classList.add("hidden")
   }
   const checkToDisabledNext = () => {
     let someSelected = Array.from(questions).some(s => s.classList.contains("selected"));
@@ -521,6 +530,7 @@ if (questionnaire) {
     );
     return winners
   }
+  showForm()
   next.onclick = () => {
     const nextStageNumber = currentStage + 1
     if (stages[nextStageNumber]) {
@@ -529,9 +539,13 @@ if (questionnaire) {
       currentStage++;
       currentStageEl.innerText = currentStage;
       if (nextStageNumber === stageCount) { //one to last stage
+        currentStage = "form"
         next.innerText = "نمایش نتیجه"
       }
-    } else {
+    } else if (currentStage === "form") {
+      showForm()
+      currentStage = "show";
+    } else if (currentStage === "show") {
       countVotes()
       const winners = findWinners()
       if (winners.length === 1) {

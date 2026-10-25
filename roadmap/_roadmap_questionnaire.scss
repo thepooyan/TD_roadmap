@@ -53,6 +53,37 @@
             display: none !important;
         }
 
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: .3rem;
+
+            .input {
+                border: 1px solid var(--color-gray-200);
+                display: block;
+                width: 100%;
+                padding: 0.6rem 1rem;
+                border-radius: 0.2rem;
+                color: var(--color-gray-700);
+
+                &::placeholder {
+                    color: var(--color-gray-400);
+                }
+            }
+            ~ .formErrors {
+                color: var(--color-fail);
+                font-size: var(--text-sm);
+                height: 0;
+                overflow: hidden;
+                interpolate-size: allow-keywords;
+                transition: height .2s;
+
+                &.show {
+                    height: auto;
+                }
+            }
+        }
+
         .resultBox {
             display: flex;
             flex-direction: column;

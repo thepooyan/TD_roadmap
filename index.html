@@ -37,6 +37,45 @@
     </symbol>
   </svg>
 
+  <div id="form_placeholder" style="display: none;" >
+    <form id="form_14" method="post" class=" dynamicForm">
+
+          <input name="__RequestVerificationToken" type="hidden" value="t_xjD62YVZml2AqO8HJtbQJMSuZ4K8Bi5XZBA4cbFyUo13KDi20MUgB5TAN8VnrLL-iDF6b5E8dMo2lM1Ec1hUy0E_1yTnpYCL2mhT1PMVL_D1MK904lTZwGaFS61P5-0">
+
+              <div class="form-group">
+                  <label for="formField_33">نام</label>
+                  <input type="hidden" name="formId" value="13">
+
+
+                      <input type="text" id="formField_33" name="formField_33" class=" " data-val="true" data-val-required="این فیلد الزامی است" placeholder="نام">
+
+                  <span class="text-danger field-validation-valid" data-valmsg-for="formField_33" data-valmsg-replace="true"></span>
+              </div>
+              <div class="form-group">
+                  <label for="formField_34">نام خانوادگی</label>
+                  <input type="hidden" name="formId" value="13">
+
+
+                      <input type="text" id="formField_34" name="formField_34" class=" " placeholder="نام خانوادگی">
+
+                  <span class="text-danger field-validation-valid" data-valmsg-for="formField_34" data-valmsg-replace="true"></span>
+              </div>
+              <div class="form-group">
+                  <label for="formField_35">شماره همراه</label>
+                  <input type="hidden" name="formId" value="13">
+
+
+                      <input type="text" id="formField_35" name="formField_35" class=" " data-val="true" data-val-required="این فیلد الزامی است" data-val-regex="فرمت وارد شده صحیح نیست" data-val-regex-pattern="^09\d{9}$" placeholder="شماره همراه">
+
+                  <span class="text-danger field-validation-valid" data-valmsg-for="formField_35" data-valmsg-replace="true"></span>
+              </div>
+
+
+          <div class="form_validation_13" style="color:darkred"></div>
+          <button type="submit" class="btn btn-primary">ثبت</button>
+    </form>
+  </div>
+
   <div id="resMenu">
     <i class="fas fa-times" id="resClose"></i>
     <div class="OriginContent">
@@ -608,7 +647,7 @@
       <div class="text">
         <h3 class="font-title">
           چگونه زبان برنامه نویسی
-          مناسب را انتخاب کنیمu؟
+          مناسب را انتخاب کنیم؟
         </h3>
         <p class="font-p">
           چند سؤال کوتاه درباره علاقه فعلی‌ات.
@@ -631,6 +670,12 @@
         <p class="desc">
           می‌توانی بیش از یک مورد انتخاب کنی.
         </p>
+        <div class="form hidden js-form">
+          <input class="input" name="name"          placeholder="نام"            autocomplete="given-name"/>
+          <input class="input" name="last_name"     placeholder="نام خانوادگی"  autocomplete="family-name"/>
+          <input class="input" name="mobile_number" placeholder="شماره همراه"   autocomplete="tel"/>
+        </div>
+        <div class="formErrors js-formErrors"></div>
         <div class="resultBox hidden">
           <p class="js-result flex gap-1 justify-center">
             <button class="button secondary js-resultBtn" data-target="frontend">نقشه راه فرانت‌اند</button>
