@@ -604,7 +604,6 @@ if (questionnaire) {
     );
     return winners
   }
-  showForm()
   next.onclick = () => {
     const nextStageNumber = currentStage + 1
     if (stages[nextStageNumber]) {
@@ -620,6 +619,7 @@ if (questionnaire) {
       showForm()
       currentStage = "show";
     } else if (currentStage === "show") {
+      form.classList.add("hidden")
       countVotes()
       const winners = findWinners()
       if (winners.length === 1) {
