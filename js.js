@@ -450,7 +450,6 @@ if (questionnaire) {
 
   const resultBox = questionnaire.querySelector(".resultBox");
   const currentStageEl = questionnaire.querySelector(".js-currentStage");
-  const stageCountEl = questionnaire.querySelector(".js-stageCount");
   const resultBtns = questionnaire.querySelectorAll(".js-resultBtn")
   const reset = questionnaire.querySelector(".js-reset");
   const title = questionnaire.querySelector(".title");
@@ -475,7 +474,6 @@ if (questionnaire) {
       checkToDisabledNext()
     }
   })
-  stageCountEl.innerText = stageCount
   const showResult = (titleText, descText, winners) => {
     title.innerText = titleText;
     desc.innerText = descText;
@@ -542,6 +540,7 @@ if (questionnaire) {
     form.classList.add("hidden")
     countVotes()
     const winners = findWinners() // length will be 1
+    currentStageEl.innerText = "";
     showResult(
       `برای نتیجه بهتر، از ${resultLabels[winners[0]]} شروع کن.`,
       singleResultDesc,
@@ -627,13 +626,14 @@ if (questionnaire) {
     );
     return winners
   }
+  currentStageEl.innerText = `${currentStage} از ${stageCount}`;
   next.onclick = () => {
     const nextStageNumber = currentStage + 1
     if (stages[nextStageNumber]) {
       countVotes()
       applyStage(stages[nextStageNumber])
       currentStage++;
-      currentStageEl.innerText = currentStage;
+      currentStageEl.innerText = `${currentStage} از ${stageCount}`;
       if (nextStageNumber === stageCount) { //one to last stage
         currentStage = "unkown"
         next.innerText = "نمایش نتیجه"
@@ -644,6 +644,7 @@ if (questionnaire) {
       if (winners.length === 1) {
         showForm()
         currentStage = "show"
+        currentStageEl.innerText = "تکمیل اطلاعات"
       }
       if (winners.length > 1) { // two options tied
         const tieBreakerStage = (() => {
@@ -653,6 +654,7 @@ if (questionnaire) {
           } else return tieBreakers.back_ai
         })();
         applyStage(tieBreakerStage)
+        currentStageEl.innerText = "یک سوال تکمیلی"
         next.innerText = "نمایش نتیجه"
       }
     } else if (currentStage === "form") {
