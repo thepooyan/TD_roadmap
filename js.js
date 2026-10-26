@@ -1,3 +1,5 @@
+const loading_svg = `<svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="3" r="0"><animate id="spinner_6RAU" begin="0;spinner_GErc.end-0.5s" attributeName="r" calcMode="spline" dur="0.6s" values="0;2;0" keySplines=".27,.42,.37,.99;.53,0,.61,.73"/></circle><circle cx="16.50" cy="4.21" r="0"><animate id="spinner_khXL" begin="spinner_6RAU.begin+0.1s" attributeName="r" calcMode="spline" dur="0.6s" values="0;2;0" keySplines=".27,.42,.37,.99;.53,0,.61,.73"/></circle><circle cx="7.50" cy="4.21" r="0"><animate id="spinner_GErc" begin="spinner_JEaM.begin+0.1s" attributeName="r" calcMode="spline" dur="0.6s" values="0;2;0" keySplines=".27,.42,.37,.99;.53,0,.61,.73"/></circle><circle cx="19.79" cy="7.50" r="0"><animate id="spinner_9orP" begin="spinner_khXL.begin+0.1s" attributeName="r" calcMode="spline" dur="0.6s" values="0;2;0" keySplines=".27,.42,.37,.99;.53,0,.61,.73"/></circle><circle cx="4.21" cy="7.50" r="0"><animate id="spinner_JEaM" begin="spinner_RwRf.begin+0.1s" attributeName="r" calcMode="spline" dur="0.6s" values="0;2;0" keySplines=".27,.42,.37,.99;.53,0,.61,.73"/></circle><circle cx="21.00" cy="12.00" r="0"><animate id="spinner_W8J5" begin="spinner_9orP.begin+0.1s" attributeName="r" calcMode="spline" dur="0.6s" values="0;2;0" keySplines=".27,.42,.37,.99;.53,0,.61,.73"/></circle><circle cx="3.00" cy="12.00" r="0"><animate id="spinner_RwRf" begin="spinner_tByH.begin+0.1s" attributeName="r" calcMode="spline" dur="0.6s" values="0;2;0" keySplines=".27,.42,.37,.99;.53,0,.61,.73"/></circle><circle cx="19.79" cy="16.50" r="0"><animate id="spinner_tedm" begin="spinner_W8J5.begin+0.1s" attributeName="r" calcMode="spline" dur="0.6s" values="0;2;0" keySplines=".27,.42,.37,.99;.53,0,.61,.73"/></circle><circle cx="4.21" cy="16.50" r="0"><animate id="spinner_tByH" begin="spinner_c3Lr.begin+0.1s" attributeName="r" calcMode="spline" dur="0.6s" values="0;2;0" keySplines=".27,.42,.37,.99;.53,0,.61,.73"/></circle><circle cx="16.50" cy="19.79" r="0"><animate id="spinner_QxRo" begin="spinner_tedm.begin+0.1s" attributeName="r" calcMode="spline" dur="0.6s" values="0;2;0" keySplines=".27,.42,.37,.99;.53,0,.61,.73"/></circle><circle cx="7.50" cy="19.79" r="0"><animate id="spinner_c3Lr" begin="spinner_PW3C.begin+0.1s" attributeName="r" calcMode="spline" dur="0.6s" values="0;2;0" keySplines=".27,.42,.37,.99;.53,0,.61,.73"/></circle><circle cx="12" cy="21" r="0"><animate id="spinner_PW3C" begin="spinner_QxRo.begin+0.1s" attributeName="r" calcMode="spline" dur="0.6s" values="0;2;0" keySplines=".27,.42,.37,.99;.53,0,.61,.73"/></circle></svg>`;
+
 const shell = {
   root: document.getElementById("roadmap_shell"),
 };
@@ -489,7 +491,9 @@ if (questionnaire) {
     })
   }
 
-  const submitForm = async () => {
+  const sendFormData = async () => {
+    await new Promise(res => setTimeout(res, 1000));
+    return
     const formId = 13;
 
     const payload = {
@@ -529,10 +533,29 @@ if (questionnaire) {
     console.log(response.status);
     console.log(await response.text());
   }
+  const submitForm = async () => {
+    next.classList.add("loading")
+    next.disabled = true;
+    next.innerHTML = loading_svg + "لطفا صبر کنید"
+    await sendFormData()
+    next.classList.remove("loading")
+    form.classList.add("hidden")
+    countVotes()
+    const winners = findWinners() // length will be 1
+    showResult(
+      `برای نتیجه بهتر، از ${resultLabels[winners[0]]} شروع کن.`,
+      singleResultDesc,
+      winners
+    )
+    consult_title.innerText = firstStep[winners[0]].title
+    consult_desc.innerText = firstStep[winners[0]].desc
+    consult_link.setAttribute("href", firstStep[winners[0]].link)
+  }
   const showForm = () => {
     title.innerText = "مرحله نهایی";
     desc.innerText = "لطفا جهت نمایش نتیجه، اطلاعات خود را وارد کنید";
     next.innerText = "ثبت"
+    next.disabled = true;
     form.classList.remove("hidden")
     questionsBox.classList.add("hidden")
   }
@@ -636,17 +659,7 @@ if (questionnaire) {
       showForm()
       currentStage = "show";
     } else if (currentStage === "show") {
-      form.classList.add("hidden")
-      countVotes()
-      const winners = findWinners() // length will be 1
-      showResult(
-        `برای نتیجه بهتر، از ${resultLabels[winners[0]]} شروع کن.`,
-        singleResultDesc,
-        winners
-      )
-      consult_title.innerText = firstStep[winners[0]].title
-      consult_desc.innerText = firstStep[winners[0]].desc
-      consult_link.setAttribute("href", firstStep[winners[0]].link)
+      submitForm()
     }
   }
   resultBtns.forEach(r => {
