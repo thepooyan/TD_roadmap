@@ -612,25 +612,15 @@ if (questionnaire) {
       currentStage++;
       currentStageEl.innerText = currentStage;
       if (nextStageNumber === stageCount) { //one to last stage
-        currentStage = "form"
+        currentStage = "unkown"
         next.innerText = "نمایش نتیجه"
       }
-    } else if (currentStage === "form") {
-      showForm()
-      currentStage = "show";
-    } else if (currentStage === "show") {
-      form.classList.add("hidden")
+    } else if (currentStage === "unkown") {
       countVotes()
       const winners = findWinners()
       if (winners.length === 1) {
-        showResult(
-          `برای نتیجه بهتر، از ${resultLabels[winners[0]]} شروع کن.`,
-          singleResultDesc,
-          winners
-        )
-        consult_title.innerText = firstStep[winners[0]].title
-        consult_desc.innerText = firstStep[winners[0]].desc
-        consult_link.setAttribute("href", firstStep[winners[0]].link)
+        showForm()
+        currentStage = "show"
       }
       if (winners.length > 1) { // two options tied
         const tieBreakerStage = (() => {
@@ -642,6 +632,21 @@ if (questionnaire) {
         applyStage(tieBreakerStage)
         next.innerText = "نمایش نتیجه"
       }
+    } else if (currentStage === "form") {
+      showForm()
+      currentStage = "show";
+    } else if (currentStage === "show") {
+      form.classList.add("hidden")
+      countVotes()
+      const winners = findWinners() // length will be 1
+      showResult(
+        `برای نتیجه بهتر، از ${resultLabels[winners[0]]} شروع کن.`,
+        singleResultDesc,
+        winners
+      )
+      consult_title.innerText = firstStep[winners[0]].title
+      consult_desc.innerText = firstStep[winners[0]].desc
+      consult_link.setAttribute("href", firstStep[winners[0]].link)
     }
   }
   resultBtns.forEach(r => {
