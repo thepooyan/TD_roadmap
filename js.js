@@ -489,9 +489,7 @@ if (questionnaire) {
     })
   }
 
-  const sendFormData = async () => {
-    await new Promise(res => setTimeout(res, 1000));
-    return
+  const sendFormData = async (name, last_name, phone) => {
     const formId = 13;
 
     const payload = {
@@ -500,15 +498,15 @@ if (questionnaire) {
       FormFieldValues: [
         {
           FormFieldId: 33, // name
-          FieldValue: "John"
+          FieldValue: name
         },
         {
           FormFieldId: 34, // last name
-          FieldValue: "Ahmadi"
+          FieldValue: last_name
         },
         {
           FormFieldId: 789, // number
-          FieldValue: "09026655632"
+          FieldValue: phone
         },
       ]
     };
@@ -535,20 +533,30 @@ if (questionnaire) {
     next.classList.add("loading")
     next.disabled = true;
     next.innerHTML = loading_svg + "لطفا صبر کنید"
-    await sendFormData()
-    next.classList.remove("loading")
-    form.classList.add("hidden")
-    countVotes()
-    const winners = findWinners() // length will be 1
-    currentStageEl.innerText = "";
-    showResult(
-      `برای نتیجه بهتر، از ${resultLabels[winners[0]]} شروع کن.`,
-      singleResultDesc,
-      winners
-    )
-    consult_title.innerText = firstStep[winners[0]].title
-    consult_desc.innerText = firstStep[winners[0]].desc
-    consult_link.setAttribute("href", firstStep[winners[0]].link)
+    formErrorsEl.classList.remove("show")
+    try {
+      await sendFormData()
+      next.classList.remove("loading")
+      form.classList.add("hidden")
+      countVotes()
+      const winners = findWinners() // length will be 1
+      currentStageEl.innerText = "";
+      showResult(
+        `برای نتیجه بهتر، از ${resultLabels[winners[0]]} شروع کن.`,
+        singleResultDesc,
+        winners
+      )
+      consult_title.innerText = firstStep[winners[0]].title
+      consult_desc.innerText = firstStep[winners[0]].desc
+      consult_link.setAttribute("href", firstStep[winners[0]].link)
+    } catch(e) {
+      console.log(e)
+      next.classList.remove("loading")
+      next.disabled = false;
+      next.innerText = "ارسال";
+      formErrorsEl.innerText = "مشکلی در ارسال اطلاعات پیش آمد. لطفا مجددا تلاش کنید."
+      formErrorsEl.classList.add("show")
+    }
   }
   const showForm = () => {
     title.innerText = "مرحله نهایی";
