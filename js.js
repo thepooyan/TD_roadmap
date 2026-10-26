@@ -555,9 +555,9 @@ if (questionnaire) {
     title.innerText = "مرحله نهایی";
     desc.innerText = "لطفا جهت نمایش نتیجه، اطلاعات خود را وارد کنید";
     next.innerText = "ثبت"
-    next.disabled = true;
     form.classList.remove("hidden")
     questionsBox.classList.add("hidden")
+    checkToDisabledNext()
   }
   const getFormErrors = () => {
     const errors = []
