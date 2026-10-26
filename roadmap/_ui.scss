@@ -50,7 +50,6 @@
 .container {
     max-width: 70rem;
     margin-inline: auto;
-    margin-block: 8rem;
     padding: 1rem;
 
     @include v.media(v.$tablet) {
